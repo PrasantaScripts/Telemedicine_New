@@ -1,0 +1,583 @@
+[
+    {
+      "slno": 1,
+      "Product_name": "Xeroworn 400",
+      "Generic_name": "Albendazole 400",
+      "Quantity": 100,
+      "Price": 4.48
+    },
+    {
+      "slno": 2,
+      "Product_name": "Biodipin 10",
+      "Generic_name": "Amlodipine 10",
+      "Quantity": 200,
+      "Price": 1.68
+    },
+    {
+      "slno": 3,
+      "Product_name": "Biodipin 2.5",
+      "Generic_name": "Amlodipine 2.5",
+      "Quantity": 200,
+      "Price": 0.63
+    },
+    {
+      "slno": 4,
+      "Product_name": "Amopress 5",
+      "Generic_name": "Amlodipine 5",
+      "Quantity": 600,
+      "Price": 0.75
+    },
+    {
+      "slno": 5,
+      "Product_name": "Elmox-125",
+      "Generic_name": "Amoxyxillin 125",
+      "Quantity": 200,
+      "Price": 1.34
+    },
+    {
+      "slno": 6,
+      "Product_name": "Elmox-250",
+      "Generic_name": "Amoxyxillin 250",
+      "Quantity": 300,
+      "Price": 2.8
+    },
+    {
+      "slno": 7,
+      "Product_name": "Moxidal 500",
+      "Generic_name": "Amoxyxillin 500",
+      "Quantity": 200,
+      "Price": 3.36
+    },
+    {
+      "slno": 8,
+      "Product_name": "Amtipax-10",
+      "Generic_name": "Amytriptyline 10",
+      "Quantity": 500,
+      "Price": 0.78
+    },
+    {
+      "slno": 9,
+      "Product_name": "Amtipax-25",
+      "Generic_name": "Amytriptyline 25",
+      "Quantity": 200,
+      "Price": 1.34
+    },
+    {
+      "slno": 10,
+      "Product_name": "Ecosprin-150",
+      "Generic_name": "Aspirin 150",
+      "Quantity": 350,
+      "Price": 0.56
+    },
+    {
+      "slno": 11,
+      "Product_name": "Ecosprin-75",
+      "Generic_name": "Aspirin 75",
+      "Quantity": 350,
+      "Price": 0.31
+    },
+    {
+      "slno": 12,
+      "Product_name": "Perten 25",
+      "Generic_name": "ATENOLOL 25",
+      "Quantity": 280,
+      "Price": 0.64
+    },
+    {
+      "slno": 13,
+      "Product_name": "Perten 50",
+      "Generic_name": "ATENOLOL 50",
+      "Quantity": 280,
+      "Price": 0.96
+    },
+    {
+      "slno": 14,
+      "Product_name": "Atoder 10 (40)",
+      "Generic_name": "Atorvastatine 10 (400 mg)",
+      "Quantity": 400,
+      "Price": 2.24
+    },
+    {
+      "slno": 15,
+      "Product_name": "Onazit 250",
+      "Generic_name": "Azithromycine 250",
+      "Quantity": 60,
+      "Price": 5.6
+    },
+    {
+      "slno": 16,
+      "Product_name": "Azikm 500",
+      "Generic_name": "Azythromycin 500",
+      "Quantity": 60,
+      "Price": 13.44
+    },
+    {
+      "slno": 17,
+      "Product_name": "BETNOVATE Oint",
+      "Generic_name": "BETAMETHASONE VALERATE OINTMENT",
+      "Quantity": 20,
+      "Price": 16.24
+    },
+    {
+      "slno": 18,
+      "Product_name": "Bylax-5",
+      "Generic_name": "Bisacodyl",
+      "Quantity": 200,
+      "Price": 0.78
+    },
+    {
+      "slno": 19,
+      "Product_name": "Cefixza 200",
+      "Generic_name": "Cefixime 200",
+      "Quantity": 200,
+      "Price": 4.48
+    },
+    {
+      "slno": 20,
+      "Product_name": "Cetfast",
+      "Generic_name": "CETRIZINE 10",
+      "Quantity": 500,
+      "Price": 0.67
+    },
+    {
+      "slno": 21,
+      "Product_name": "Ceequin 250",
+      "Generic_name": "CHLOROQUIN 250",
+      "Quantity": 200,
+      "Price": 0
+    },
+    {
+      "slno": 22,
+      "Product_name": "Cinirone 25",
+      "Generic_name": "CINNARIZINE 25",
+      "Quantity": 200,
+      "Price": 1.68
+    },
+    {
+      "slno": 23,
+      "Product_name": "Floxip 250",
+      "Generic_name": "CIPROFLOXACIN 250",
+      "Quantity": 200,
+      "Price": 1.57
+    },
+    {
+      "slno": 24,
+      "Product_name": "Ciprodac 500",
+      "Generic_name": "CIPROFLOXACIN 500",
+      "Quantity": 200,
+      "Price": 2.69
+    },
+    {
+      "slno": 25,
+      "Product_name": "Cipbid",
+      "Generic_name": "CIPROFLOXACIN EYE DROP",
+      "Quantity": 25,
+      "Price": 11.2
+    },
+    {
+      "slno": 26,
+      "Product_name": "Lonipax",
+      "Generic_name": "CLONAZEPAM 0.5",
+      "Quantity": 200,
+      "Price": 1.12
+    },
+    {
+      "slno": 27,
+      "Product_name": "CO-TRIMOXAZOLE DS",
+      "Generic_name": "CO-TRIMOXAZOLE DS",
+      "Quantity": 200,
+      "Price": 0
+    },
+    {
+      "slno": 28,
+      "Product_name": "CO-TRIMOXAZOLE SS",
+      "Generic_name": "CO-TRIMOXAZOLE SS",
+      "Quantity": 200,
+      "Price": 0
+    },
+    {
+      "slno": 29,
+      "Product_name": "CO-TRIMOXAZOLE 480",
+      "Generic_name": "CO-TRIMOXAZOLE 480",
+      "Quantity": 200,
+      "Price": 1.12
+    },
+    {
+      "slno": 30,
+      "Product_name": "CO-TRIMOXAZOLE 800+160",
+      "Generic_name": "CO-TRIMOXAZOLE 800+160",
+      "Quantity": 200,
+      "Price": 2.02
+    },
+    {
+      "slno": 31,
+      "Product_name": "DERIPHYLLIN RETARD 300",
+      "Generic_name": "DERIPHYLLIN RETARD 300",
+      "Quantity": 300,
+      "Price": 1.19
+    },
+    {
+      "slno": 32,
+      "Product_name": "Vovefen 50",
+      "Generic_name": "Diclofenac sodium 50",
+      "Quantity": 200,
+      "Price": 0.9
+    },
+    {
+      "slno": 33,
+      "Product_name": "Hetrazan 100",
+      "Generic_name": "Diethylcarbamazine citrate 100",
+      "Quantity": 300,
+      "Price": 1.31
+    },
+    {
+      "slno": 34,
+      "Product_name": "Eldostal 10",
+      "Generic_name": "Domperidone 10",
+      "Quantity": 500,
+      "Price": 1.12
+    },
+    {
+      "slno": 35,
+      "Product_name": "Doxy 100",
+      "Generic_name": "Doxycycline 100",
+      "Quantity": 160,
+      "Price": 4.9
+    },
+    {
+      "slno": 36,
+      "Product_name": "Elpril 10",
+      "Generic_name": "Enalapril 10",
+      "Quantity": 200,
+      "Price": 2.46
+    },
+    {
+      "slno": 37,
+      "Product_name": "Eopril 2.5",
+      "Generic_name": "Enalapril 2.5",
+      "Quantity": 200,
+      "Price": 0.9
+    },
+    {
+      "slno": 38,
+      "Product_name": "Enalros-5",
+      "Generic_name": "Enalapril 5",
+      "Quantity": 400,
+      "Price": 1.34
+    },
+    {
+      "slno": 39,
+      "Product_name": "Famonext 40",
+      "Generic_name": "Famotidine 40",
+      "Quantity": 490,
+      "Price": 0.56
+    },
+    {
+      "slno": 40,
+      "Product_name": "Fenoday 160",
+      "Generic_name": "Fenofibrate 160",
+      "Quantity": 100,
+      "Price": 3.36
+    },
+    {
+      "slno": 41,
+      "Product_name": "Ferrous Sulphate",
+      "Generic_name": "Ferrous Sulphate",
+      "Quantity": 2000,
+      "Price": 0.04
+    },
+    {
+      "slno": 42,
+      "Product_name": "Foliquik 5",
+      "Generic_name": "Folic acid",
+      "Quantity": 600,
+      "Price": 0.75
+    },
+    {
+      "slno": 43,
+      "Product_name": "Lasiwin 40 mg",
+      "Generic_name": "Frusemide 40 (Lasix 40)",
+      "Quantity": 200,
+      "Price": 0.78
+    },
+    {
+      "slno": 44,
+      "Product_name": "Gabavan 100",
+      "Generic_name": "Gabapentine 100",
+      "Quantity": 200,
+      "Price": 2.8
+    },
+    {
+      "slno": 45,
+      "Product_name": "Gabavan 300",
+      "Generic_name": "Gabapentine 300",
+      "Quantity": 200,
+      "Price": 4.26
+    },
+    {
+      "slno": 46,
+      "Product_name": "Gyentop",
+      "Generic_name": "Gentamicin cream",
+      "Quantity": 25,
+      "Price": 0
+    },
+    {
+      "slno": 47,
+      "Product_name": "Glirum 5",
+      "Generic_name": "Glipizide 5",
+      "Quantity": 400,
+      "Price": 0.56
+    },
+    {
+      "slno": 48,
+      "Product_name": "Aydrazide 12.5",
+      "Generic_name": "Hydrochlorothyazide 12.5",
+      "Quantity": 200,
+      "Price": 0.9
+    },
+    {
+      "slno": 49,
+      "Product_name": "Hydronol 25",
+      "Generic_name": "Hydrochlorothyazide 25",
+      "Quantity": 200,
+      "Price": 1.34
+    },
+    {
+      "slno": 50,
+      "Product_name": "Brufen 200",
+      "Generic_name": "Ibuprofen 200",
+      "Quantity": 600,
+      "Price": 0.56
+    },
+    {
+      "slno": 51,
+      "Product_name": "Brifen 400 mg",
+      "Generic_name": "Ibuprofen 400",
+      "Quantity": 900,
+      "Price": 1.01
+    },
+    {
+      "slno": 52,
+      "Product_name": "Indocap",
+      "Generic_name": "Indomethacin-25",
+      "Quantity": 200,
+      "Price": 4.03
+    },
+    {
+      "slno": 53,
+      "Product_name": "Tetanus vaccine",
+      "Generic_name": "Inj Tetanus toxoid",
+      "Quantity": 50,
+      "Price": 0
+    },
+    {
+      "slno": 54,
+      "Product_name": "Isobgul",
+      "Generic_name": "Isabgul",
+      "Quantity": 10,
+      "Price": 106.4
+    },
+    {
+      "slno": 55,
+      "Product_name": "Itrofic 100",
+      "Generic_name": "Itraconazole",
+      "Quantity": 100,
+      "Price": 6.16
+    },
+    {
+      "slno": 56,
+      "Product_name": "Elastran 25",
+      "Generic_name": "Losartan 25",
+      "Quantity": 200,
+      "Price": 1.34
+    },
+    {
+      "slno": 57,
+      "Product_name": "Elsartan 50",
+      "Generic_name": "Losartan 50",
+      "Quantity": 200,
+      "Price": 2.02
+    },
+    {
+      "slno": 58,
+      "Product_name": "Elcephase 1000",
+      "Generic_name": "Metformin 1000",
+      "Quantity": 400,
+      "Price": 2.46
+    },
+    {
+      "slno": 59,
+      "Product_name": "Metros 500",
+      "Generic_name": "Metformin 500",
+      "Quantity": 400,
+      "Price": 1.12
+    },
+    {
+      "slno": 60,
+      "Product_name": "Perinorm 10",
+      "Generic_name": "Metoclopramide 10",
+      "Quantity": 500,
+      "Price": 1.01
+    },
+    {
+      "slno": 61,
+      "Product_name": "Flagyl 200",
+      "Generic_name": "Metroniazole 200",
+      "Quantity": 900,
+      "Price": 0.45
+    },
+    {
+      "slno": 62,
+      "Product_name": "Flagyl 400",
+      "Generic_name": "Metroniazole 400",
+      "Quantity": 900,
+      "Price": 1.19
+    },
+    {
+      "slno": 63,
+      "Product_name": "Laxific plus",
+      "Generic_name": "Milk of Magnesia + sodium",
+      "Quantity": 10,
+      "Price": 44.8
+    },
+    {
+      "slno": 64,
+      "Product_name": "Monocare 10",
+      "Generic_name": "Montelukast 10",
+      "Quantity": 200,
+      "Price": 3.36
+    },
+    {
+      "slno": 65,
+      "Product_name": "Nasivion 0.05%",
+      "Generic_name": "Nasivion Adult (Oxymetazolin)",
+      "Quantity": 10,
+      "Price": 60.48
+    },
+    {
+      "slno": 66,
+      "Product_name": "Nasivion 0.025%",
+      "Generic_name": "Nasivion Paed",
+      "Quantity": 10,
+      "Price": 78.4
+    },
+    {
+      "slno": 67,
+      "Product_name": "Martifur",
+      "Generic_name": "Nitrofurantoin 100",
+      "Quantity": 200,
+      "Price": 2.5
+    },
+    {
+      "slno": 68,
+      "Product_name": "Norfol N",
+      "Generic_name": "Norlut-N",
+      "Quantity": 200,
+      "Price": 0
+    },
+    {
+      "slno": 69,
+      "Product_name": "Eldeom 20",
+      "Generic_name": "Omeprazole 20",
+      "Quantity": 600,
+      "Price": 1.64
+    },
+    {
+      "slno": 70,
+      "Product_name": "Parimol kid",
+      "Generic_name": "Paracetamol 125",
+      "Quantity": 200,
+      "Price": 0.58
+    },
+    {
+      "slno": 71,
+      "Product_name": "Flumol 500",
+      "Generic_name": "Paracetamol 500",
+      "Quantity": 500,
+      "Price": 0.78
+    },
+    {
+      "slno": 72,
+      "Product_name": "Pacmathrin lotion",
+      "Generic_name": "Permethrin lotion",
+      "Quantity": 20,
+      "Price": 40.32
+    },
+    {
+      "slno": 73,
+      "Product_name": "El-pio-15",
+      "Generic_name": "Pioglitazone-15",
+      "Quantity": 200,
+      "Price": 2.24
+    },
+    {
+      "slno": 74,
+      "Product_name": "Topovid solution",
+      "Generic_name": "POVIDONE-IODINE SOLUTION",
+      "Quantity": 10,
+      "Price": 43.9
+    },
+    {
+      "slno": 75,
+      "Product_name": "Ridslone 10",
+      "Generic_name": "Prednisolone 10",
+      "Quantity": 200,
+      "Price": 1.6
+    },
+    {
+      "slno": 76,
+      "Product_name": "Wysolone 5",
+      "Generic_name": "Prednisolone 5",
+      "Quantity": 200,
+      "Price": 0.84
+    },
+    {
+      "slno": 77,
+      "Product_name": "Asthalin-2",
+      "Generic_name": "Salbutamol-2",
+      "Quantity": 200,
+      "Price": 0.16
+    },
+    {
+      "slno": 78,
+      "Product_name": "Asthalin-4",
+      "Generic_name": "Salbutamol-4",
+      "Quantity": 200,
+      "Price": 0.2
+    },
+    {
+      "slno": 79,
+      "Product_name": "Promasol Syp",
+      "Generic_name": "Syrup Phenergan",
+      "Quantity": 10,
+      "Price": 28
+    },
+    {
+      "slno": 80,
+      "Product_name": "Tenebetic 20",
+      "Generic_name": "Teneligliptin 20",
+      "Quantity": 200,
+      "Price": 4.48
+    },
+    {
+      "slno": 81,
+      "Product_name": "Urea-10",
+      "Generic_name": "Urea-10",
+      "Quantity": 10,
+      "Price": 64.96
+    },
+    {
+      "slno": 82,
+      "Product_name": "Beplex",
+      "Generic_name": "Vit. B-complex",
+      "Quantity": 1000,
+      "Price": 0.11
+    },
+    {
+      "slno": 83,
+      "Product_name": "Zinc 50",
+      "Generic_name": "Zinc 50",
+      "Quantity": 200,
+      "Price": 2.8
+    }
+  ]
