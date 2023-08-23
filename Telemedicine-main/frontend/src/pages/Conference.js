@@ -21,8 +21,8 @@ import FolderIcon from "@mui/icons-material/Folder";
 import Popup from "../components/showPresriptionPopup";
 import Popup1 from "../components/PrescriptionDetailsPopup";
 import { Tooltip } from "@mui/material";
-const socket = io.connect("http://localhost:5000");
-// const socket = io.connect("https://telemedicine-srcc.azurewebsites.net/");
+// const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://telemedicine-sfoundation.azurewebsites.net/");
 
 const Conference = () => {
   const [max, setMax] = useState(0);
