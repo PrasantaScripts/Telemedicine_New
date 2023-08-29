@@ -10,7 +10,7 @@ const FBasicInfo = ({setMobile,setMainName,setAddress,setLocationCode,setName}) 
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel htmlFor="Name">मुख्य वेतन अर्जक/ Chief Wage Earner (Name)</InputLabel>
+        <InputLabel htmlFor="Name">मुख्य वेतन अर्जक/ Chief Wage Earner (Name)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
         <OutlinedInput
             id="Name"
             label="मुख्य वेतन अर्जक/ Chief Wage Earner (Name)"
@@ -27,7 +27,7 @@ const FBasicInfo = ({setMobile,setMainName,setAddress,setLocationCode,setName}) 
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel htmlFor="Name">Mobile No</InputLabel>
+        <InputLabel htmlFor="Name">Mobile No<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
         <OutlinedInput
             id="Name"
             label="Mobile No"
@@ -41,7 +41,7 @@ const FBasicInfo = ({setMobile,setMainName,setAddress,setLocationCode,setName}) 
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel htmlFor="Name">पता (Address)</InputLabel>
+        <InputLabel htmlFor="Name">पता (Address)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
         <OutlinedInput
             id="Name"
             label="पता (Address)"
@@ -55,7 +55,7 @@ const FBasicInfo = ({setMobile,setMainName,setAddress,setLocationCode,setName}) 
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel htmlFor="Name">Date</InputLabel>
+        <InputLabel htmlFor="Name">Date<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
         <OutlinedInput
             id="Name"
             label="Date"
@@ -70,7 +70,7 @@ const FBasicInfo = ({setMobile,setMainName,setAddress,setLocationCode,setName}) 
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel id="demo-simple-select-label">Location Code</InputLabel>
+        <InputLabel id="demo-simple-select-label">Location Code<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"

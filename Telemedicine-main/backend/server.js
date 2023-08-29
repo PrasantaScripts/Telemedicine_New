@@ -24,7 +24,7 @@ console.log(PORT);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://telemedicine-sfoundation.azurewebsites.net/",
+    origin: "https://telemedicine-sfoundation.azurewebsites.net/"
     // origin: "http://localhost:3000",
   },
 });

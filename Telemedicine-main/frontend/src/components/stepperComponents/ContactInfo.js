@@ -5,7 +5,7 @@ import '../sty.css';
 const contactInfo = ({setAdress,setMobile,setGender,setSpeciality}) => {
   return (
     <Box sx={{flexFlow:'column'}} display='flex' justifyContent='center'>
-      <Box sx={{ marginTop:'10vh',alignSelf:'start',marginLeft:'-4vw' }} display='flex' justifyContent='center'>
+      <Box sx={{ marginTop:'7vh',alignSelf:'start' }} display='flex' justifyContent='center'>
         <Box display='flex' justifyContent='center' alignItems='center' sx={{backgroundColor:'#2B7A78',width:'56px',height:'56px',color:'#17252A',borderRadius:'5px 0px 0px 5px'}}>
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
@@ -19,7 +19,7 @@ const contactInfo = ({setAdress,setMobile,setGender,setSpeciality}) => {
         />
         </FormControl>                
       </Box>
-      <Box sx={{ marginTop:'25px',alignSelf:'start',marginLeft:'-4vw' }} display='flex'>
+      <Box sx={{ marginTop:'25px',alignSelf:'start' }} display='flex'>
         <Box display='flex' justifyContent='center' alignItems='center' sx={{backgroundColor:'#2B7A78',width:'56px',height:'56px',color:'#17252A',borderRadius:'5px 0px 0px 5px'}}>
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
@@ -33,7 +33,7 @@ const contactInfo = ({setAdress,setMobile,setGender,setSpeciality}) => {
         />
         </FormControl>                
       </Box>
-      <Box display='flex' sx={{marginTop:'3vh'}}>
+      <Box display='flex' sx={{marginTop:'2vh'}}>
         <Typography variant='subtitle1' component='div'>
           Gender:
         </Typography>
@@ -48,8 +48,6 @@ const contactInfo = ({setAdress,setMobile,setGender,setSpeciality}) => {
             <FormControlLabel control={<Radio />} label='Female' value='Female' />
           </RadioGroup>
         </FormControl>
-      </Box>
-      <Box display='flex' sx={{marginTop:'2vh'}}>
         <Typography variant='subtitle1' component='div'>
           Speciality:
         </Typography>
@@ -65,6 +63,22 @@ const contactInfo = ({setAdress,setMobile,setGender,setSpeciality}) => {
           </RadioGroup>
         </FormControl>
       </Box>
+      {/* <Box display='flex' sx={{marginTop:'2vh'}}> */}
+        {/* <Typography variant='subtitle1' component='div'>
+          Speciality:
+        </Typography>
+        <FormControl sx={{marginTop:'2vh'}}>
+          <RadioGroup
+            defaultValue='1'
+            row
+            name='Speciality'
+            onChange={(e)=>{setSpeciality(e.target.value)}}
+          >
+          <FormControlLabel control={<Radio />} label='GP' value='GP' />
+            <FormControlLabel control={<Radio />} label='Gynecologist' value='Gynecologist' />
+          </RadioGroup>
+        </FormControl> */}
+      {/* </Box> */}
     </Box>
   )
 }

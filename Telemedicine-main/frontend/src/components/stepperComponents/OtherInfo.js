@@ -26,7 +26,7 @@ const OtherInfo = ({ setEducation, setFamilyIncome, setMaritalStatus }) => {
         justifyContent="center"
         alignItems="center">
         <FormControl sx={{ width: "40vw" }}>
-          <InputLabel id="demo-simple-select-label1">Education</InputLabel>
+          <InputLabel id="demo-simple-select-label1">Education<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
           <Select
             labelId="demo-simple-select-label1"
             id="demo-simple-select1"
@@ -70,7 +70,7 @@ const OtherInfo = ({ setEducation, setFamilyIncome, setMaritalStatus }) => {
         justifyContent="center">
         <FormControl sx={{ width: "40vw" }}>
           <InputLabel id="demo-simple-select-label2">
-            Monthly Family Income
+            Monthly Family Income<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography>
           </InputLabel>
           <Select
             labelId="demo-simple-select-label2"
@@ -93,7 +93,7 @@ const OtherInfo = ({ setEducation, setFamilyIncome, setMaritalStatus }) => {
         display="flex"
         justifyContent="center">
         <FormControl sx={{ width: "40vw" }}>
-          <InputLabel id="demo-simple-select-label">Marital Status</InputLabel>
+          <InputLabel id="demo-simple-select-label">Marital Status<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
