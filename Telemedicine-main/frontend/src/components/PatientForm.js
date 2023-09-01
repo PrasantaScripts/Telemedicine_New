@@ -66,7 +66,7 @@ const PatientForm = ({patientData}) => {
         }
     }
     async function submitHandler (){
-        if(!height || !weight || !temperature || !pulse || !sbp || !dbp || !alcohol || !asthama || !diabetes || !smoking || !spo2){
+        if(!height || !weight || !temperature || !pulse){
             setResult('failed beacuse all fields were not filled');
             return;
         }

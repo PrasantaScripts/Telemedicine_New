@@ -60,35 +60,35 @@ const patientSchema = mongoose.Schema({
         },
         sbp:{
             type:String,
-            required:true,
+            // required:true,
         },
         dbp:{
             type:String,
-            required:true,
+            // required:true,
         },
         alcohol:{
             type:String,
-            required:true,
+            // required:true,
         },
         asthama:{
             type:String,
-            required:true,
+            // required:true,
         },
         diabetes:{
             type:String,
-            required:true,
+            // required:true,
         },
         familyIll:{
             type:String,
-            required:true,
+            // required:true,
         },
         smoking:{
             type:String,
-            required:true,
+            // required:true,
         },
         spo2:{
             type:String,
-            required:true,
+            // required:true,
         },
         others:{
             type:String,

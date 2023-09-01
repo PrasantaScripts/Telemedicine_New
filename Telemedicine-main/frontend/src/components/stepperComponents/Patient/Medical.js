@@ -64,7 +64,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel htmlFor="Name">सिस्टोलिक रक्तचाप (Systolic Blood Pressure)  <Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+        <InputLabel htmlFor="Name">सिस्टोलिक रक्तचाप (Systolic Blood Pressure) </InputLabel>
         <OutlinedInput
             id="Name"
             label="सिस्टोलिक रक्तचाप (Systolic Blood Pressure)"
@@ -78,7 +78,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel htmlFor="Name">डायस्टोलिक रक्तचाप (Diastolic Blood Pressure)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+        <InputLabel htmlFor="Name">डायस्टोलिक रक्तचाप (Diastolic Blood Pressure)</InputLabel>
         <OutlinedInput
             id="Name"
             label="डायस्टोलिक रक्तचाप (Diastolic Blood Pressure)"
@@ -92,7 +92,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>create</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-        <InputLabel htmlFor="Name">SPO2<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+        <InputLabel htmlFor="Name">SPO2</InputLabel>
         <OutlinedInput
             id="Name"
             label="SPO2"
@@ -106,7 +106,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>book</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-          <InputLabel id="demo-simple-select-label">Do you have Diabetes? (क्या आपको मधुमेह है?)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+          <InputLabel id="demo-simple-select-label">Do you have Diabetes? (क्या आपको मधुमेह है?)</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -126,7 +126,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>work</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-          <InputLabel id="demo-simple-select-label">Do you have asthma or any breathing trouble? (क्या आपको अस्थमा है या सांस लेने में कोई परेशानी है?)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+          <InputLabel id="demo-simple-select-label">Do you have asthma or any breathing trouble? (क्या आपको अस्थमा है या सांस लेने में कोई परेशानी है?)</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -145,7 +145,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>work</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-          <InputLabel id="demo-simple-select-label">Smoking habits (धूम्रपान की आदतें)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+          <InputLabel id="demo-simple-select-label">Smoking habits (धूम्रपान की आदतें)</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -168,7 +168,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>work</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-          <InputLabel id="demo-simple-select-label">Alcohol drinking habit (शराब पीने की आदत)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+          <InputLabel id="demo-simple-select-label">Alcohol drinking habit (शराब पीने की आदत)</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -190,7 +190,7 @@ const Medical = ({setHeight,setWeight,setTemperature,setPulse,setSbp,setDbp,setA
             <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>work</i>
         </Box>
         <FormControl sx={{width:'40vw'}}>
-          <InputLabel id="demo-simple-select-label">Family illness(पारिवारिक बीमारी)<Typography component="span" sx={{ color: 'red', marginLeft: '0.2rem' }}>*</Typography></InputLabel>
+          <InputLabel id="demo-simple-select-label">Family illness(पारिवारिक बीमारी)</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
