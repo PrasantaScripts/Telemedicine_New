@@ -22,7 +22,7 @@ import Popup from "../components/showPresriptionPopup";
 import Popup1 from "../components/PrescriptionDetailsPopup";
 import { Tooltip } from "@mui/material";
 // const socket = io.connect("http://localhost:5000");
-const socket = io.connect("https://telemedicine-sfoundation.azurewebsites.net/");
+const socket = io.connect("https://ssfservice.in/");
 
 const Conference = () => {
   const [max, setMax] = useState(0);

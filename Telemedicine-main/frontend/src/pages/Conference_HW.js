@@ -11,7 +11,7 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import AddIcon from "@mui/icons-material/Add";
 // const socket = io.connect("http://localhost:5000");
-const socket = io.connect("https://telemedicine-sfoundation.azurewebsites.net/");
+const socket = io.connect("https://ssfservice.in/");
 
 const Conference = () => {
   const [message, setMessage] = useState();
