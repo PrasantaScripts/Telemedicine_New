@@ -1,27 +1,35 @@
-const mongoose=require('mongoose')
+const mongoose = require("mongoose");
 
-const MedicineSchema = new mongoose.Schema({
-    slno:{
-        type: Number,
-        required: true
+const MedicineSchema = new mongoose.Schema(
+  {
+    Product_code: {
+      type: String,
     },
-    Product_name:{
-        type: String,
-        required: true
+    Product_name: {
+      type: String,
     },
-    Generic_name:{
-        type: String,
-        required: true
+    Generic_name: {
+      type: String,
+      required: true,
     },
-    Quantity:{
-        type: Number,
-        required: true
+    CurStock_Level: {
+      type: Number,
     },
-    Price:{
-        type: Number,
-        required: true
-    }
-},{timestamp:true,collection:'medicinestorage'})
+    Recorder_Level: {
+      type: Number,
+    },
+    LastPurchaseDate: {
+      type: Date,
+    },
+    RunningRR: {
+      type: Number,
+    },
+    Discard: {
+      type: Number,
+    },
+  },
+  { timestamp: true, collection: "medicinestorage" }
+);
 
-const MedicineStorage=mongoose.model('medicinestorage',MedicineSchema);
-module.exports=MedicineStorage;
+const MedicineStorage = mongoose.model("medicinestorage", MedicineSchema);
+module.exports = MedicineStorage;

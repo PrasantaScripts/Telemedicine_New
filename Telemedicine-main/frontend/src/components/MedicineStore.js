@@ -30,6 +30,7 @@ const MedicineStore = ({logs}) => {
               }
               const {data} = await axios.get('/api/med/Medicine',{},config);
               setMedicine(data);
+              // console.log(typeof(data[0].LastPurchaseDate));
           }catch(error){
               console.log(error);
           } 
@@ -148,13 +149,31 @@ return (
       </button>
       <TableContainer component={Paper} sx = {{width:"80vw",marginLeft:"10vw",marginTop:"10v"}}>
         <Table sx={{minWidth: 650}} >
-          <TableHead >
+        <TableHead>
             <TableRow>
-              <TableCell sx={{backgroundColor:"#3CB3AC"}}>Sl.No</TableCell>
-              <TableCell sx={{backgroundColor:"#3CB3AC"}}>Product Name</TableCell>
-              <TableCell  sx={{backgroundColor:"#3CB3AC"}}>Generic Name</TableCell>
-              <TableCell align="right" sx={{backgroundColor:"#3CB3AC"}}>Quantity</TableCell>
-              <TableCell align="right" sx={{backgroundColor:"#3CB3AC"}}>Price</TableCell>
+              <TableCell sx={{ backgroundColor: "#3CB3AC" }}>Sl_No</TableCell>
+              <TableCell sx={{ backgroundColor: "#3CB3AC" }}>
+                Product_code
+              </TableCell>
+              <TableCell align="right" sx={{ backgroundColor: "#3CB3AC" }}>
+                Product_name
+              </TableCell>
+              <TableCell sx={{ backgroundColor: "#3CB3AC" }}>
+                Generic_name
+              </TableCell>
+              <TableCell align="right" sx={{ backgroundColor: "#3CB3AC" }}>
+                CurStock_Level
+              </TableCell>
+              <TableCell sx={{ backgroundColor: "#3CB3AC" }}>
+                Recorder_Level
+              </TableCell>
+              <TableCell sx={{ backgroundColor: "#3CB3AC" }}>
+                LastPurchaseDate
+              </TableCell>
+              <TableCell sx={{ backgroundColor: "#3CB3AC" }}>
+                RunningRR
+              </TableCell>
+              <TableCell sx={{ backgroundColor: "#3CB3AC" }}>Discard</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -163,10 +182,14 @@ return (
                 return(
                   <TableRow key={idx} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell>{idx+1}</TableCell>
-                    <TableCell component="th" scope="row">{item.name1}</TableCell>
-                    <TableCell>{item.name2}</TableCell>
-                    <TableCell align="right">{item.quantity}</TableCell>
-                    <TableCell align="right">{item.txt}</TableCell>
+                    <TableCell component="th" scope="row">{item.Product_code}</TableCell>
+                    <TableCell>{item.Product_name}</TableCell>
+                    <TableCell align="right">{item.Generic_name}</TableCell>
+                    <TableCell align="right">{item.CurStock_Level}</TableCell>
+                    <TableCell align="right">{item.Recorder_Level}</TableCell>
+                    <TableCell align="right">{item.LastPurchaseDate}</TableCell>
+                    <TableCell align="right">{item.RunningRR}</TableCell>
+                    <TableCell align="right">{item.Discard}</TableCell>
                   </TableRow>
                 )
               })

@@ -78,7 +78,7 @@ const Prescription = () => {
   };
   const filterOptions = (options, { inputValue }) => {
     return options.filter((option) =>
-      option.name2.toLowerCase().includes(inputValue.toLowerCase())
+      option.Generic_name.toLowerCase().includes(inputValue.toLowerCase())
     );
   };
   async function getMedicines() {
@@ -761,7 +761,7 @@ const Prescription = () => {
           <Box sx={{ width: "60vw" }}>
             <Autocomplete
               options={allMed}
-              getOptionLabel={(option) => option.name2}
+              getOptionLabel={(option) => option.Generic_name}
               onChange={handleSelectChange}
               filterOptions={filterOptions}
               renderInput={(params) => (

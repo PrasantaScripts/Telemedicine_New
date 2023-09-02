@@ -159,11 +159,11 @@ const patientSchema = mongoose.Schema({
 const PatientQSchema = new mongoose.Schema({
   doc_name: {
     type: String,
-    required: true,
+    // required: true,
   },
   Patients: {
     type: [patientSchema],
-    required: true,
+    // required: true,
   },
 }, {
   timestamps: true,
