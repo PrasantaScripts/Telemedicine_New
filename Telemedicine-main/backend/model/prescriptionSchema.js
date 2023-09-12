@@ -13,15 +13,11 @@ const prescriptionSchema = mongoose.Schema({
     symptoms:{
         type:String,
     },
-    instructions:{
-        type:String,
-    },
+
     diagnosis:{
         type:String,
     },
-    number:{
-        type:String,
-    },
+
     medicines:[
         {
             name:{
@@ -39,10 +35,6 @@ const prescriptionSchema = mongoose.Schema({
             total:{
                 type:String,
             },
-            fee:{
-                type:String,
-                default : "free",
-            }
         }
     ],
     tests:{

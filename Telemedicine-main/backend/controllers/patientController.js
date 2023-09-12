@@ -246,7 +246,7 @@ const editPat=asyncHandler(async(req,res) => {
 const trueFetch = asyncHandler(async (req,res)=>{
     const {id} = req.body;
     console.log(id);
-    const patient = await Patient.findOne({'patientData.registrationNumber':id})
+    const patient = await Patient.findOne({'patientData.registrationP':id})
     if(patient){
         res.json(patient)
     }

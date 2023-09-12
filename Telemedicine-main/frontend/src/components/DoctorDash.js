@@ -11,24 +11,25 @@ const DoctorDash = ({setPrevP,setShow,setPrescription,setPatient}) => {
   const [greeting, setGreeting] = useState();
   const history = useHistory();
   const location = useLocation();
-
+  
   const urlParams = new URLSearchParams(location.search);
   const doc_name = urlParams.get('DoctorName');
   console.log(doc_name)
-    useEffect(()=>{
-      async function fetch (){
-        try{
-          const config={
-              headers: {
-                  "Content-type":"application/json"
-              },
-          }
-          var today = new Date();
-          var from = new Date(2020,9,9);
-          var to = new Date(today.getFullYear(),today.getMonth(),parseInt(today.getDate())+1);
-          console.log(to)
-          const {data} = await axios.post('/api/patient/appointed',{doc_name,from,to},config);
-
+  useEffect(()=>{
+    async function fetch (){
+      try{
+        const config={
+          headers: {
+            "Content-type":"application/json"
+          },
+        }
+        var today = new Date();
+        var from = new Date(2020,9,9);
+        var to = new Date(today.getFullYear(),today.getMonth(),parseInt(today.getDate())+1);
+        console.log(to)
+        const {data} = await axios.post('/api/patient/appointed',{doc_name,from,to},config);
+        
+        
           if(data.length===0){
             setPatientArr(['None Found'])
           }
@@ -52,7 +53,7 @@ const DoctorDash = ({setPrevP,setShow,setPrescription,setPatient}) => {
           const {data}= await axios.post('/api/doctor/getQ',{doc_name},config)
           console.log(data.patientData.ticketId)
           if(data){
-            setMeet('MEET')
+            setMeet('START MEET')
             localStorage.setItem('room',data.patientData.ticketId)
             setCurrTID(data.patientData.ticketId);
           }
@@ -85,12 +86,12 @@ const DoctorDash = ({setPrevP,setShow,setPrescription,setPatient}) => {
       const path = '/conference/'+currTID;
       history.push(path);
     }
-    function roomHandler(idx){
-      localStorage.setItem('room',patientArr[idx].patientData.ticketId)
-      // const path = '/prescription/'+patientArr[idx].patientData.ticketId;
-      const path = '/conference/'+patientArr[idx].patientData.ticketId;
-      history.push(path);
-    }
+    // function roomHandler(idx){
+    //   localStorage.setItem('room',patientArr[idx].patientData.ticketId)
+    //   // const path = '/prescription/'+patientArr[idx].patientData.ticketId;
+    //   const path = '/conference/'+patientArr[idx].patientData.ticketId;
+    //   history.push(path);
+    // }
  
     const prescriptionHandler = async(idx) => {
       const id = patientArr[idx].patientData.ticketId;
@@ -101,7 +102,8 @@ const DoctorDash = ({setPrevP,setShow,setPrescription,setPatient}) => {
           },          
         }
         const {data} = await axios.post('/api/patient/ticketFetch',{id},config);
-        const reg = data.patientData.registrationNumber;
+        const reg = data.patientData.registrationP;
+        console.log(data)
         const p = await axios.post('/api/patient/trueFetch',{id:reg},config);
         const t = await axios.post('/api/prescription/fetch',{id},config);
         console.log(t)
@@ -135,9 +137,9 @@ const DoctorDash = ({setPrevP,setShow,setPrescription,setPatient}) => {
         <Typography variant='h7' component='div' sx={{justifyContent:'center',fontFamily:'Sans Serif',display:'flex',alignItems:'center',width:'20vw',height:'5vh',paddingLeft:'30px'}}>
           Next Appointed Date
         </Typography>
-        <Typography variant='h7' component='div' sx={{justifyContent:'center',fontFamily:'Sans Serif',display:'flex',alignItems:'center',width:'20vw',height:'5vh',paddingLeft:'52px'}}>
+        {/* <Typography variant='h7' component='div' sx={{justifyContent:'center',fontFamily:'Sans Serif',display:'flex',alignItems:'center',width:'20vw',height:'5vh',paddingLeft:'52px'}}>
           Details
-        </Typography>
+        </Typography> */}
         <Typography variant='h7' component='div' sx={{justifyContent:'center',fontFamily:'Sans Serif',display:'flex',alignItems:'center',width:'20vw',height:'5vh',paddingLeft:'52px'}}>
           Previous Prescription
         </Typography>
@@ -169,11 +171,11 @@ const DoctorDash = ({setPrevP,setShow,setPrescription,setPatient}) => {
                     <Typography variant='h7' display='flex' justifyContent='center' alignItems='center'  sx={{height:'10vh',fontFamily:'Sans Sherif',width:'20vw',paddingLeft:'4vw'}}>
                       {item.nextAppointedDate.slice(8, 10)}{item.nextAppointedDate.slice(4, 7)}-{item.nextAppointedDate.slice(0, 4)}
                     </Typography>
-                    <Box display='flex' justifyContent='center' alignItems='center' sx={{height:'8vh',fontFamily:'Sans Sherif',width:'20vw',paddingLeft:'4vw'}}>
+                    {/* <Box display='flex' justifyContent='center' alignItems='center' sx={{height:'8vh',fontFamily:'Sans Sherif',width:'20vw',paddingLeft:'4vw'}}>
                       <Button onClick={()=>roomHandler(idx)} className='btn' sx={{backgroundColor:'#19414D',color:'#FEFFFF',height:'7vh',width:'8vw',borderRadius:'15px'}}>
                         Start Meeting
                       </Button>
-                    </Box>
+                    </Box> */}
                     <Box display='flex' justifyContent='center' alignItems='center' sx={{height:'8vh',fontFamily:'Sans Sherif',width:'20vw',paddingLeft:'4vw'}}>
                       <Button onClick={()=>prescriptionHandler(idx)} className='btn' sx={{backgroundColor:'#19414D',color:'#FEFFFF',height:'7vh',width:'8vw',borderRadius:'15px'}}>
                         See Prescription
@@ -186,7 +188,7 @@ const DoctorDash = ({setPrevP,setShow,setPrescription,setPatient}) => {
           })
         }
         <Button onClick={meetHandler} className='btn' sx={{backgroundColor:'#19414D',color:'#FEFFFF',height:'5vh',width:'10vw',borderRadius:'15px',marginTop:'2vh'}}
-        disabled = {(meet === 'MEET')? false:true}> 
+        disabled = {(meet === 'START MEET')? false:true}> 
           <Typography sx={{color:'white',fontSize:'0.8rem'}}>
             {meet}
           </Typography> 

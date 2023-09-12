@@ -33,28 +33,28 @@ const Prescription = () => {
   const history = useHistory();
   const [selectedMed, setSelectedMed] = useState("");
   const [currTID, setCurrTID] = useState(0);
-  const [fee, setFee] = useState();
+  // const [fee, setFee] = useState();
   const [schedule, setSchedule] = useState();
   const [upname, setUpname] = useState();
   const [upDuration, setUpDuration] = useState();
   const [upSchedule, setUpSchedule] = useState();
   const [upDose, setUpDose] = useState();
   const [upTotal, setUpTotal] = useState();
-  const [upFee, setUpFee] = useState();
+  // const [upFee, setUpFee] = useState();
   const medVal = useRef(null);
   const durationVal = useRef(null);
   const totalVal = useRef(null);
-  const feeVal = useRef(null);
+  // const feeVal = useRef(null);
   const symptomsVal = useRef(null);
   const scheduleVal = useRef(null);
 
   const instructionVal = useRef(null);
   const testVal = useRef(null);
-  const otherVal = useRef(null)
-  const dateVal = useRef(null)
-  const diagnosisVal = useRef(null)
-  const numMedVal = useRef(null)
-  const location = useLocation()
+  const otherVal = useRef(null);
+  const dateVal = useRef(null);
+  const diagnosisVal = useRef(null);
+  const numMedVal = useRef(null);
+  const location = useLocation();
 
   const [patient, setPatient] = useState({
     patientData: {
@@ -121,8 +121,12 @@ const Prescription = () => {
           { id },
           config
         );
-        const p = await axios.post('/api/prescription/fetch',{id:data.patientData.ticketId},config);
-        console.log(p)
+        const p = await axios.post(
+          "/api/prescription/fetch",
+          { id: data.patientData.ticketId },
+          config
+        );
+        console.log(p);
         setPatient(data);
         var str = "";
         data.reason.map((item, idx) => {
@@ -130,27 +134,26 @@ const Prescription = () => {
         });
         // setSymptoms(str);
         console.log(str);
-        const s = localStorage.getItem('sympt')
-        symptomsVal.current.value = s+str;
-        setSymptoms(str+s)
+        const s = localStorage.getItem("sympt");
+        symptomsVal.current.value = s + str;
+        setSymptoms(str + s);
 
-        instructionVal.current.value = localStorage.getItem('instruction')
-        setInstructions(localStorage.getItem('instruction'))
-        diagnosisVal.current.value = localStorage.getItem('diagnosis')
-        setDiagnosis(localStorage.getItem('diagnosis'))
-        numMedVal.current.value = localStorage.getItem('numberMed')
-        setNumber(localStorage.getItem('numberMed'))
-        testVal.current.value = localStorage.getItem('test')
-        setTests(localStorage.getItem('test'))
-        otherVal.current.value = localStorage.getItem('other')
-        setOther(localStorage.getItem('other'))
-        dateVal.current.value = localStorage.getItem('date')
-        setDate(localStorage.getItem('date'))
-        const a = JSON.parse(localStorage.getItem('arr'))
-        setArray(a)
+        // instructionVal.current.value = localStorage.getItem("instruction");
+        // setInstructions(localStorage.getItem("instruction"));
+        diagnosisVal.current.value = localStorage.getItem("diagnosis");
+        setDiagnosis(localStorage.getItem("diagnosis"));
+        // numMedVal.current.value = localStorage.getItem("numberMed");
+        // setNumber(localStorage.getItem("numberMed"));
+        testVal.current.value = localStorage.getItem("test");
+        setTests(localStorage.getItem("test"));
+        otherVal.current.value = localStorage.getItem("other");
+        setOther(localStorage.getItem("other"));
+        dateVal.current.value = localStorage.getItem("date");
+        setDate(localStorage.getItem("date"));
+        const a = JSON.parse(localStorage.getItem("arr"));
+        setArray(a);
 
-        localStorage.setItem('sympt',str+s);
-
+        localStorage.setItem("sympt", str + s);
       } catch (error) {
         console.log(error);
       }
@@ -171,7 +174,7 @@ const Prescription = () => {
       schedule,
       dose,
       total,
-      fee,
+      // fee,
     };
     var arr = [];
     arr = [...showButton];
@@ -181,13 +184,13 @@ const Prescription = () => {
     arr = [];
     durationVal.current.value = "";
     totalVal.current.value = "";
-    feeVal.current.value = "";
+    // feeVal.current.value = "";
     scheduleVal.current.value = "";
     arr = [...array];
     arr.push(data);
     setArray(arr);
-    const arrString = JSON.stringify(arr)
-    localStorage.setItem('arr',arrString)
+    const arrString = JSON.stringify(arr);
+    localStorage.setItem("arr", arrString);
     console.log(arr);
   };
   const getQ = async () => {
@@ -248,7 +251,7 @@ const Prescription = () => {
           id,
           dateMade,
           symptoms,
-          instructions,
+          // instructions,
           diagnosis,
           arr,
           number,
@@ -258,15 +261,15 @@ const Prescription = () => {
         },
         config
       );
-      localStorage.setItem('sympt','')
-      localStorage.setItem('instruction','')
-      localStorage.setItem('diagnosis','')
-      localStorage.setItem('numberMed','')
-      localStorage.setItem('test','')
-      localStorage.setItem('other','')
-      localStorage.setItem('other','')
-      localStorage.setItem('date','')
-      localStorage.setItem('arr',[])
+      localStorage.setItem("sympt", "");
+      // localStorage.setItem("instruction", "");
+      localStorage.setItem("diagnosis", "");
+      // localStorage.setItem("numberMed", "");
+      localStorage.setItem("test", "");
+      localStorage.setItem("other", "");
+      localStorage.setItem("other", "");
+      localStorage.setItem("date", "");
+      localStorage.setItem("arr", []);
       history.push(`/doctor?DoctorName=${doc_name}`);
       // history.goBack();
     } catch (error) {
@@ -297,64 +300,62 @@ const Prescription = () => {
   function deleteHandler(idx) {
     var arr = [...array];
     arr = arr.filter((item, i) => {
-      return i != idx;
+      return i !== idx;
     });
     setArray(arr);
   }
 
+  // const instructionHandler = (e) => {
+  //   setInstructions(e.target.value);
+  //   localStorage.setItem("instruction", e.target.value);
+  // };
 
-  const instructionHandler = (e) => {
-    setInstructions(e.target.value)
-    localStorage.setItem('instruction',e.target.value)
-  }
-
-  localStorage.setItem('id',id)
-  localStorage.setItem('dateMade',currDate)
+  localStorage.setItem("id", id);
+  localStorage.setItem("dateMade", currDate);
 
   const diagnosisHandler = (e) => {
-    setDiagnosis(e.target.value)
-    localStorage.setItem('diagnosis',e.target.value)
-  }
+    setDiagnosis(e.target.value);
+    localStorage.setItem("diagnosis", e.target.value);
+  };
 
-  const numberMedHandler = (e) => {
-    setNumber(e.target.value)
-    localStorage.setItem('numberMed',e.target.value)
-  }
+  // const numberMedHandler = (e) => {
+  //   setNumber(e.target.value);
+  //   localStorage.setItem("numberMed", e.target.value);
+  // };
 
   const symptomHandler = (e) => {
-    if(e.key === 'Enter'){
-      const d = e.target.value + '\n'
-      setSymptoms(d)
-      localStorage.setItem('sympt',d)
-      console.log('first')
+    if (e.key === "Enter") {
+      const d = e.target.value + "\n";
+      setSymptoms(d);
+      localStorage.setItem("sympt", d);
+      console.log("first");
+    } else {
+      setSymptoms(e.target.value);
+      localStorage.setItem("sympt", e.target.value);
     }
-    else{
-      setSymptoms(e.target.value)
-      localStorage.setItem('sympt',e.target.value)
-    }
-  }
+  };
 
   const dateHandler = (e) => {
-    setDate(e.target.value)
-    localStorage.setItem('date',e.target.value)
-  }
+    setDate(e.target.value);
+    localStorage.setItem("date", e.target.value);
+  };
 
   const testHandler = (e) => {
-    setTests(e.target.value)
-    localStorage.setItem('test',e.target.value)
-  }
+    setTests(e.target.value);
+    localStorage.setItem("test", e.target.value);
+  };
 
   const otherHandler = (e) => {
-    setOther(e.target.value)
-    localStorage.setItem('other',e.target.value)
-  }
+    setOther(e.target.value);
+    localStorage.setItem("other", e.target.value);
+  };
 
-  const currUrl = location.pathname
-  console.log(currUrl)
-  const s = currUrl ==='/conference/'+id ? '70vw' : '100vw'
+  const currUrl = location.pathname;
+  console.log(currUrl);
+  const s = currUrl === "/conference/" + id ? "70vw" : "100vw";
 
   return (
-    <div style={{width:s}}>
+    <div style={{ width: s }}>
       <Box
         backgroundColor="#FEFFFF"
         sx={{
@@ -659,7 +660,8 @@ const Prescription = () => {
           <textarea
             id="name"
             ref={symptomsVal}
-            onChange={symptomHandler} onKeyDown={symptomHandler}
+            onChange={symptomHandler}
+            onKeyDown={symptomHandler}
             style={{
               width: "60vw",
               height: "5vh",
@@ -672,7 +674,7 @@ const Prescription = () => {
             }}
           />
         </Box>
-        <Box
+        {/* <Box
           sx={{
             alignSelf: "flex-start",
             marginLeft: "4vw",
@@ -692,8 +694,8 @@ const Prescription = () => {
               outline: "none",
               padding: "8px",
             }}
-          />
-        </Box>
+          /> */}
+        {/* </Box> */}
         <Box
           sx={{
             alignSelf: "flex-start",
@@ -703,7 +705,8 @@ const Prescription = () => {
           <Typography sx={{ fontSize: "0.8rem" }}>Diagnosis:</Typography>
           <textarea
             id="name"
-            ref={diagnosisVal} onChange={diagnosisHandler}
+            ref={diagnosisVal}
+            onChange={diagnosisHandler}
             style={{
               width: "60vw",
               height: "5vh",
@@ -716,7 +719,7 @@ const Prescription = () => {
             }}
           />
         </Box>
-        <Box
+        {/* <Box
           sx={{
             alignSelf: "flex-start",
             marginLeft: "4vw",
@@ -736,7 +739,7 @@ const Prescription = () => {
               outline: "none",
             }}
           />
-        </Box>
+        </Box> */}
         {/* <Button
           onClick={() => {
             history.push("/conference");
@@ -854,7 +857,7 @@ const Prescription = () => {
                   }}
                   placeholder="Duration"
                   style={{
-                    width: "25%",
+                    width: "35%",
                     height: "3vh",
                     paddingLeft: "12px",
                     borderRadius: "8px",
@@ -870,15 +873,15 @@ const Prescription = () => {
                   }}
                   placeholder="Total Number of Medicine"
                   style={{
-                    width: "25%",
+                    width: "35%",
                     height: "3vh",
-                    paddingLeft: "12px",
+                    paddingLeft: "5px",
                     borderRadius: "8px",
                     outline: "none",
                     border: "1px solid rgb(170, 170, 170)",
                   }}
                 />
-                <input
+                {/* <input
                   type="text"
                   ref={feeVal}
                   onChange={(e) => {
@@ -893,7 +896,7 @@ const Prescription = () => {
                     outline: "none",
                     border: "1px solid rgb(170, 170, 170)",
                   }}
-                />
+                /> */}
               </Box>
             </Box>
             {array.map((item, idx) => {
@@ -1013,7 +1016,7 @@ const Prescription = () => {
                         }}
                       />
                     </Box>
-                    <Box
+                    {/* <Box
                       sx={{
                         display: "flex",
                         width: "40%",
@@ -1042,7 +1045,7 @@ const Prescription = () => {
                           border: "1px solid rgb(170, 170, 170)",
                         }}
                       />
-                    </Box>
+                    </Box> */}
                   </Box>
                   <Button
                     className="btn"
@@ -1076,7 +1079,8 @@ const Prescription = () => {
           <Typography sx={{ fontSize: "0.8rem" }}>Tests:</Typography>
           <textarea
             id="name"
-            ref={testVal} onChange={testHandler}
+            ref={testVal}
+            onChange={testHandler}
             placeholder="test"
             style={{
               width: "60vw",
@@ -1101,7 +1105,8 @@ const Prescription = () => {
           </Typography>
           <textarea
             id="name"
-            ref={otherVal} onChange={otherHandler}
+            ref={otherVal}
+            onChange={otherHandler}
             placeholder="info"
             style={{
               width: "60vw",
@@ -1127,7 +1132,8 @@ const Prescription = () => {
           <input
             id="name"
             type="date"
-            ref={dateVal} onChange={dateHandler}
+            ref={dateVal}
+            onChange={dateHandler}
             style={{
               width: "60vw",
               height: "4vh",
@@ -1138,18 +1144,36 @@ const Prescription = () => {
             }}
           />
         </Box>
-      {
-        currUrl ==='/conference/'+id ?(
-          <Button className='btn' onClick={()=>{history.push('/prescription/'+id);window.location.reload()}} sx={{backgroundColor:'#19414D',color:'#FEFFFF',width:'7vw',height:'4vh',marginLeft:'7vh'}}>
+        {currUrl === "/conference/" + id ? (
+          <Button
+            className="btn"
+            onClick={() => {
+              history.push("/prescription/" + id);
+              window.location.reload();
+            }}
+            sx={{
+              backgroundColor: "#19414D",
+              color: "#FEFFFF",
+              width: "7vw",
+              height: "4vh",
+              marginLeft: "7vh",
+            }}>
             Preview
           </Button>
-        ):
-        (
-          <Button className='btn' onClick={submitHandler} sx={{backgroundColor:'#19414D',color:'#FEFFFF',width:'7vw',height:'4vh',marginLeft:'7vh'}}>
+        ) : (
+          <Button
+            className="btn"
+            onClick={submitHandler}
+            sx={{
+              backgroundColor: "#19414D",
+              color: "#FEFFFF",
+              width: "7vw",
+              height: "4vh",
+              marginLeft: "7vh",
+            }}>
             Submit
           </Button>
-        )
-      }
+        )}
       </Box>
     </div>
   );
