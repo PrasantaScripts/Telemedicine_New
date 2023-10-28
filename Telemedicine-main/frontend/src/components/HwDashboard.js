@@ -44,25 +44,16 @@ const HwDashboard = () => {
         setQueue(data.Patients);
         if (patientArr[0] === "None Found" || data.Patients.length == 0) {
           return;
-        } else {
-          const arr = patientArr.filter((it, idx) => {
-            var f = true;
-            queue.forEach((item) => {
-              if (item.patientData.name === it.patientData.name) {
-                f = false;
-              }
-            });
-            return f;
-          });
-          console.log(arr);
         }
+        return data.Patients
       } catch (error) {
         console.log(error);
       }
     }
 
   useEffect(() => {
-    fetch1();
+    var patientQueue = fetch1();
+    submitHandler(patientQueue)
   }, [docName]);
 
   useEffect(() => {
@@ -110,7 +101,7 @@ const HwDashboard = () => {
       console.log(e);
     }
   };
-  const submitHandler = async () => {
+  async function submitHandler (patientQueue){
     try {
       const config = {
         headers: {
@@ -126,9 +117,18 @@ const HwDashboard = () => {
       if (data.length === 0) {
         setpatientArr(["None Found"]);
       } else {
-        setpatientArr(data);
+        const arr = data.filter((it, idx) => {
+          var f = true;
+          patientQueue.forEach((item) => {
+            if (item.patientData.name === it.patientData.name) {
+              f = false;
+            }
+          });
+          return f;
+        });
+        setpatientArr(arr);
+        console.log(queue);
       }
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -388,7 +388,7 @@ const HwDashboard = () => {
           </FormControl>
         </Box>
         <Button
-          onClick={submitHandler}
+          onClick={(e)=>{submitHandler(queue)}}
           sx={{
             backgroundColor: "#19414D",
             color: "#FEFFFF",
