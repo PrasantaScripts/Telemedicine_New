@@ -197,7 +197,7 @@ const popQ = asyncHandler(async (req, res) => {
   }
 });
 const getQ = asyncHandler(async (req, res) => {
-  const { doc_name } = req.body;
+  const { doc_name,regId } = req.body;
   console.log("GetQ Init");
   const queue = await PatientQ.findOne({ doc_name });
   // console.log(queue)
@@ -206,6 +206,7 @@ const getQ = asyncHandler(async (req, res) => {
   } else {
     const doc = await PatientQ.create({
       doc_name: doc_name,
+      doc_reg_no:regId,
       Patients: [],
     });
     if (doc) {

@@ -24,7 +24,8 @@ import "../pages/style.css";
 const PrescriptionDetails = ({ data, patient, setShow }) => {
   const printRef = useRef();
   console.log(data);
-  console.log(data.dateMade);
+  // console.log(data.date);
+  // console.log(data.id);
   console.log(patient);
 
   const currDate = new Date();
@@ -35,6 +36,15 @@ const PrescriptionDetails = ({ data, patient, setShow }) => {
     data.dateMade.slice(5, 7) +
     "/" +
     data.dateMade.slice(0, 4);
+  // const dateMade = new Date(data.dateMade);
+  // const formattedDate = dateMade.toISOString().replace(/:/g, "-");
+
+  const nextAppointedDate1 =
+    patient.appointedTime.slice(8, 10) +
+    "/" +
+    patient.appointedTime.slice(5, 7) +
+    "/" +
+    patient.appointedTime.slice(0, 4);
 
   const handleDownloadPdf = async () => {
     const element = printRef.current;
@@ -48,7 +58,7 @@ const PrescriptionDetails = ({ data, patient, setShow }) => {
       ((imgProperties.height * pdfWidth) / imgProperties.height) * 1.2;
 
     pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("print.pdf");
+    pdf.save(`${today}.pdf`);
   };
 
   const redirectHandler = () => {
@@ -112,6 +122,7 @@ const PrescriptionDetails = ({ data, patient, setShow }) => {
           sx={{
             height: "fit-content",
             minHeight: "100vw",
+
             paddingBottom: "4vh",
             paddingTop: "9vh",
             marginLeft: "5vw",
@@ -560,6 +571,28 @@ const PrescriptionDetails = ({ data, patient, setShow }) => {
                 <i>No advice given</i>
               </Typography>
             )}
+          </Box>
+
+          <Box
+            display="flex"
+            sx={{
+              flexWrap: "wrap",
+              width: "100vw",
+              borderTop: "3px solid black ",
+              borderBottom: "3px solid black",
+              paddingBottom: "5px",
+              paddingTop: "10px",
+            }}>
+            <Box
+              sx={{
+                alignSelf: "flex-start",
+                marginLeft: "4vw",
+                marginBottom: "2vh",
+              }}>
+              <Typography sx={{ fontSize: "1.2rem" }}>
+                <b>Next Appointed Date: </b> <span> </span> {nextAppointedDate1}
+              </Typography>
+            </Box>
           </Box>
         </Box>
 

@@ -40,6 +40,7 @@ const Prescription = () => {
   const [upSchedule, setUpSchedule] = useState();
   const [upDose, setUpDose] = useState();
   const [upTotal, setUpTotal] = useState();
+  const [docId, setDocId] = useState();
   // const [upFee, setUpFee] = useState();
   const medVal = useRef(null);
   const durationVal = useRef(null);
@@ -58,17 +59,17 @@ const Prescription = () => {
 
   const [patient, setPatient] = useState({
     patientData: {
-      name: "afhajf;la",
-      id: "afhesdfhs",
+      name: "Loading...",
+      id: "Loading...",
     },
-    DOB: "1235",
+    DOB: "0000",
     medical: {
-      height: "35",
-      weight: "35",
-      sbp: "43",
-      dbp: "35",
-      temperature: "13",
-      spo2: "23",
+      height: "Not Mentioned",
+      weight: "Not Mentioned",
+      sbp: "Not Mentioned",
+      dbp: "Not Mentioned",
+      temperature: "Not Mentioned",
+      spo2: "Not Mentioned",
     },
   });
 
@@ -236,6 +237,11 @@ const Prescription = () => {
   const submitHandler = async () => {
     console.log(array);
     var arr = [...array];
+    const docIDNum = JSON.parse(
+      localStorage.getItem("DoctorOnline")
+    ).registrationID;
+    setDocId(docIDNum);
+    console.log("registration number of doctor", docIDNum);
     const doc_name = JSON.parse(localStorage.getItem("DoctorOnline")).name;
     try {
       const config = {
@@ -498,6 +504,29 @@ const Prescription = () => {
               }}
             />
           </Box>
+
+          <Box
+            sx={{
+              alignSelf: "flex-start",
+              marginLeft: "4vw",
+              // marginBottom: "2vh",
+              // marginTop: "2vh",
+            }}>
+            <Typography sx={{ fontSize: "0.8rem" }}>Doctor Id:</Typography>
+            <input
+              id="name"
+              disabled
+              value={docId}
+              placeholder="name"
+              style={{
+                width: "28vw",
+                height: "3vh",
+                borderRadius: "5px",
+                border: "1px solid rgb(170, 170, 170)",
+                paddingLeft: "5px",
+              }}
+            />
+          </Box>
           <Box
             sx={{
               alignSelf: "flex-start",
@@ -507,7 +536,11 @@ const Prescription = () => {
             <Typography sx={{ fontSize: "0.8rem" }}>Age:</Typography>
             <input
               id="name"
-              value={currDate.getFullYear() - patient.DOB.substring(6)}
+              value={
+                patient && patient.DOB
+                  ? currDate.getFullYear() - patient.DOB.substring(6)
+                  : ""
+              }
               disabled
               placeholder="name"
               style={{
@@ -1145,21 +1178,7 @@ const Prescription = () => {
           />
         </Box>
         {currUrl === "/conference/" + id ? (
-          <Button
-            className="btn"
-            onClick={() => {
-              history.push("/prescription/" + id);
-              window.location.reload();
-            }}
-            sx={{
-              backgroundColor: "#19414D",
-              color: "#FEFFFF",
-              width: "7vw",
-              height: "4vh",
-              marginLeft: "7vh",
-            }}>
-            Preview
-          </Button>
+          ""
         ) : (
           <Button
             className="btn"
@@ -1174,6 +1193,12 @@ const Prescription = () => {
             Submit
           </Button>
         )}
+        {/* inplace of "" */}
+        {/* (
+          <Button className='btn' onClick={()=>{history.push('/prescription/'+id);window.location.reload()}} sx={{backgroundColor:'#19414D',color:'#FEFFFF',width:'7vw',height:'4vh',marginLeft:'7vh'}}>
+            Preview
+          </Button>
+        ) */}
       </Box>
     </div>
   );

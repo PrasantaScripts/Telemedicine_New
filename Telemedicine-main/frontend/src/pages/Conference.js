@@ -22,8 +22,8 @@ import Popup from "../components/showPresriptionPopup";
 import Popup1 from "../components/PrescriptionDetailsPopup";
 import { Tooltip } from "@mui/material";
 import axios from "axios";
-const socket = io.connect("http://localhost:5000");
-// const socket = io.connect("https://ssfservice.in/");
+//const socket = io.connect("http://localhost:5000");
+ const socket = io.connect("https://ssfservice.in/");
 
 const Conference = () => {
   const [max, setMax] = useState(0);
@@ -44,8 +44,10 @@ const Conference = () => {
   const para = useParams();
   const [id, setId] = useState(para.id);
   const history = useHistory();
-  const [doc_Name, setDoc_Name] = useState(JSON.parse(localStorage.getItem("DoctorOnline")).name);
-  const [queue, setQueue] = useState(['empty']);
+  const [doc_Name, setDoc_Name] = useState(
+    JSON.parse(localStorage.getItem("DoctorOnline")).name
+  );
+  const [queue, setQueue] = useState(["empty"]);
 
   useEffect(() => {
     // Create a new Peer instance
@@ -155,8 +157,6 @@ const Conference = () => {
     setMessage("");
   };
 
-
-
   const endCall = async () => {
     // Get the room ID from localStorage
     const room = localStorage.getItem("room");
@@ -174,21 +174,21 @@ const Conference = () => {
       };
       const { data } = await axios.post(
         "/api/doctor/popQ",
-        { doc_name:doc_Name },
+        { doc_name: doc_Name },
         config
       );
       console.log(data);
       // Redirect the user to the prescription page with the specific ID
-      // history.push("/prescription/" + id);
-      history.push(`/doctor?DoctorName=${doc_Name}`);
+      history.push("/prescription/" + id);
+      // history.push(`/doctor?DoctorName=${doc_Name}`);
       // Reload the window
       window.location.reload();
     } catch (error) {
       console.log(error);
     }
 
-    
-    
+    //I have to use popQ() inside this function
+    //basically I have to move this to the prescription then after that I have to use the popq() inside the submit handler and I have to initialize it above on it.
   };
 
   useEffect(() => {
@@ -431,18 +431,7 @@ const Conference = () => {
                   </Tooltip>
                 )}
               </div>
-              <div className="options__button">
-                <Tooltip title="End Conference">
-                  <button
-                    className="options__button"
-                    onClick={() => {
-                      endCall();
-                    }}>
-                    {" "}
-                    <CallEndIcon fontSize="large" sx={{ width: "50px" }} />{" "}
-                  </button>
-                </Tooltip>
-              </div>
+
               <div id="muteButton" className="options__button">
                 <Tooltip title="Check Old Prescription">
                   <button
@@ -452,6 +441,18 @@ const Conference = () => {
                     }}>
                     {" "}
                     <FolderIcon fontSize="large" sx={{ width: "50px" }} />{" "}
+                  </button>
+                </Tooltip>
+              </div>
+              <div className="options__button">
+                <Tooltip title="End Conference">
+                  <button
+                    className="options__button"
+                    onClick={() => {
+                      endCall();
+                    }}>
+                    {" "}
+                    <CallEndIcon fontSize="large" sx={{ width: "50px" }} />{" "}
                   </button>
                 </Tooltip>
               </div>

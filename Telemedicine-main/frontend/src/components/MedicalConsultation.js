@@ -52,26 +52,26 @@ const Dashboard = () => {
     fetch();
   }, [])
   
-  const submitHandler = async ()=>{
-    if(!from || !to){
-      return;
-    }
-    try{
+  // const submitHandler = async ()=>{
+  //   if(!from || !to){
+  //     return;
+  //   }
+  //   try{
       
-      const config={
-        headers: {
-          "Content-type":"application/json"
-        }, 
-      }
-      const {data} = await axios.post('/api/patient/appointed',{from,to},config);
-      setpatientArr(data)
+  //     const config={
+  //       headers: {
+  //         "Content-type":"application/json"
+  //       }, 
+  //     }
+  //     const {data} = await axios.post('/api/patient/appointed',{from,to},config);
+  //     setpatientArr(data)
 
-      console.log(data);
+  //     console.log(data);
 
-    }catch(error){
-      console.log(error);
-    }
-  }
+  //   }catch(error){
+  //     console.log(error);
+  //   }
+  // }
 
   const fetchAll = async()=>{
       const config={
@@ -152,11 +152,11 @@ const Dashboard = () => {
               />
             </FormControl>
           </Box>
-          <Button onClick={submitHandler} sx={{backgroundColor:'#19414D',color:'#FEFFFF',marginLeft:'5vw',width:'8vw',height:'4vh',borderRadius:'15px','&:hover':{backgroundColor:'#19414D'}}}>
+          {/* <Button onClick={submitHandler} sx={{backgroundColor:'#19414D',color:'#FEFFFF',marginLeft:'5vw',width:'8vw',height:'4vh',borderRadius:'15px','&:hover':{backgroundColor:'#19414D'}}}>
             Fetch
-          </Button>
-          <Button onClick={fetchAll} sx={{backgroundColor:'#19414D',color:'#FEFFFF',marginLeft:'23vw',width:'8vw',height:'4vh',borderRadius:'15px','&:hover':{backgroundColor:'#19414D'}}}>
-            Fetch New 
+          </Button> */}
+          <Button onClick={fetchAll} sx={{backgroundColor:'#19414D',color:'#FEFFFF',marginLeft:'23vw',width:'10vw',height:'4vh',borderRadius:'15px','&:hover':{backgroundColor:'#19414D'}}}>
+            Fetch Patients
           </Button>
         </Box>
         <Box display='flex' alignItems='center' sx={{width:'80vw',borderRadius:'15px',marginLeft:'5vw',paddingTop:'40px',flexFlow:'column',height:'75vh',overflow:'scroll'}}>
@@ -226,7 +226,7 @@ const Dashboard = () => {
                                     })}
                                   </Select>
                                   <Button onClick={()=>{addHandler(item)}} sx={{backgroundColor:'#19414D',color:'#FEFFFF',marginLeft:'12vw',width:'8vw',borderRadius:'15px','&:hover':{backgroundColor:'#19414D'}}}>
-                                    Change
+                                    Appoint
                                   </Button>
                               </Box>
                           </AccordionDetails>

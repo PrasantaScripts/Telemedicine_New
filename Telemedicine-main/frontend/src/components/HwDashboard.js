@@ -26,34 +26,34 @@ const HwDashboard = () => {
   const history = useHistory();
 
   async function fetch1() {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      try {
-        if (!docName) {
-          console.log("no doc");
-          return;
-        }
-        var { data } = await axios.post(
-          "/api/doctor/fetchQ",
-          { docName },
-          config
-        );
-        setQueue(data.Patients);
-        if (patientArr[0] === "None Found" || data.Patients.length == 0) {
-          return;
-        }
-        return data.Patients
-      } catch (error) {
-        console.log(error);
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+    try {
+      if (!docName) {
+        console.log("no doc");
+        return;
       }
+      var { data } = await axios.post(
+        "/api/doctor/fetchQ",
+        { docName },
+        config
+      );
+      setQueue(data.Patients);
+      if (patientArr[0] === "None Found" || data.Patients.length == 0) {
+        return;
+      }
+      return data.Patients;
+    } catch (error) {
+      console.log(error);
     }
+  }
 
   useEffect(() => {
     var patientQueue = fetch1();
-    submitHandler(patientQueue)
+    submitHandler(patientQueue);
   }, [docName]);
 
   useEffect(() => {
@@ -73,8 +73,8 @@ const HwDashboard = () => {
       setDocNames(Temp);
     }
     fetch();
-    const doc = localStorage.getItem('doc')
-    setDocName(doc)
+    const doc = localStorage.getItem("doc");
+    setDocName(doc);
     fetch1();
     const isAuth = localStorage.getItem("isAuth");
     if (isAuth == "false") {
@@ -101,7 +101,7 @@ const HwDashboard = () => {
       console.log(e);
     }
   };
-  async function submitHandler (patientQueue){
+  async function submitHandler(patientQueue) {
     try {
       const config = {
         headers: {
@@ -132,7 +132,7 @@ const HwDashboard = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   const queueHandler = async (idx) => {
     setDocName(patientArr[idx].doctor);
@@ -177,9 +177,9 @@ const HwDashboard = () => {
   }
 
   const docHandler = (e) => {
-    setDocName(e.target.value)
-    localStorage.setItem('doc',e.target.value)
-  }
+    setDocName(e.target.value);
+    localStorage.setItem("doc", e.target.value);
+  };
 
   return (
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
@@ -388,7 +388,9 @@ const HwDashboard = () => {
           </FormControl>
         </Box>
         <Button
-          onClick={(e)=>{submitHandler(queue)}}
+          onClick={(e) => {
+            submitHandler(queue);
+          }}
           sx={{
             backgroundColor: "#19414D",
             color: "#FEFFFF",
