@@ -52,6 +52,14 @@ const HwLogin = () => {
       alert(error.response.data.message);
     }
   };
+
+  const keyHandler = (e) => {
+    // Check if the pressed key is "Enter" and if the shift key is not pressed
+    if (e.key === "Enter" && !e.shiftKey) {
+      // Call the sendMessage function when conditions are met
+      loginHandler();
+    }
+  };
   return (
     <Box>
       <Box
@@ -141,6 +149,7 @@ const HwLogin = () => {
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
+                    onKeyDown={(e) => keyHandler(e)}
                     label="Password"
                     variant="filled"
                     sx={{ input: { color: "#FEFFFF" } }}

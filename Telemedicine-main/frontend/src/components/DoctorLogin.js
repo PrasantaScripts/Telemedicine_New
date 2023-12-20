@@ -40,6 +40,14 @@ const DoctorLogin = () => {
     }
   }
 
+  const keyHandler = (e) => {
+    // Check if the pressed key is "Enter" and if the shift key is not pressed
+    if (e.key === "Enter" && !e.shiftKey) {
+      // Call the sendMessage function when conditions are met
+      loginHandler();
+    }
+  };
+
   return (
     <Box>
       <Box display='flex' justifyContent='space-around' alignItems='center' sx={{width:'33vw',height:'30vh',flexFlow:'column'}}>
@@ -54,7 +62,7 @@ const DoctorLogin = () => {
                   <i class="material-icons" style={{color:'#FEFFFF',fontSize:'2.5rem'}}>person_outline</i>
                 </Box>
                 <ThemeProvider theme={theme}>
-                  <TextField id="standard-basic" color='neutral' onChange={(e)=>{setRegistrationID(e.target.value)}} label="Registration ID" variant="filled" sx={{ input: { color: '#FEFFFF' } }} focused/>
+                  <TextField id="standard-basic" color='neutral' onChange={(e)=>{setRegistrationID(e.target.value)}} onKeyDown={(e) => keyHandler(e)} label="Registration ID" variant="filled" sx={{ input: { color: '#FEFFFF' } }} focused/>
                 </ThemeProvider>
               </Box>
               <Button onClick={loginHandler} sx={{marginTop:'5vh',width:'10vw',color:'#DEF2F1',borderRadius:'20px',padding:'0.5rem',backgroundColor:"#CF823A",'&:hover':{backgroundColor:'#CF8F5D'}}}>

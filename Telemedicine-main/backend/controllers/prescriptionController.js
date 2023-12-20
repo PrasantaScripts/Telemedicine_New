@@ -41,10 +41,19 @@ const addPrescription = asyncHandler(async (req, res) => {
     //     { isVisited: "true" }
     //   );
     // }
+
+    //checking the appointed date is available or not
+
+    const updateObject = { isVisited: true };
+    // if (date !== null) {
+    //   updateObject.appointedTime = date;
+    // }
+
     try {
       const patient = await Patient.findOneAndUpdate(
         { "patientData.ticketId": id },
-        { isVisited: "true" }
+        { $set: updateObject }
+        // { $set: { isVisited: true, appointedTime: date } }
       );
       res.status(201).send("ok");
     } catch (error) {

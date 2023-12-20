@@ -11,8 +11,8 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import { Tooltip } from "@mui/material";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import AddIcon from "@mui/icons-material/Add";
-//const socket = io.connect("http://localhost:5000");
- const socket = io.connect("https://ssfservice.in/");
+const socket = io.connect("http://localhost:5000");
+//const socket = io.connect("https://ssfservice.in/");
 
 const Conference = () => {
   const [message, setMessage] = useState();
@@ -127,6 +127,13 @@ const Conference = () => {
     peerInstance.current.disconnect();
     history.push("/HealthWorker");
     window.location.reload();
+  };
+  const keyHandler = (e) => {
+    // Check if the pressed key is "Enter" and if the shift key is not pressed
+    if (e.key === "Enter" && !e.shiftKey) {
+      // Call the sendMessage function when conditions are met
+      sendMessage();
+    }
   };
 
   useEffect(() => {
@@ -307,6 +314,7 @@ const Conference = () => {
               onChange={(e) => {
                 setMessage(e.target.value);
               }}
+              onKeyDown={(e) => keyHandler(e)}
             />
             <button
               id="send"

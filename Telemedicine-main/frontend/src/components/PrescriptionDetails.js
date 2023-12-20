@@ -27,6 +27,7 @@ const PrescriptionDetails = ({ data, patient, setShow }) => {
   // console.log(data.date);
   // console.log(data.id);
   console.log(patient);
+  console.log(data.date);
 
   const currDate = new Date();
   // const today = currDate.getDate()+'/'+(currDate.getMonth()+1)+'/'+currDate.getFullYear();
@@ -39,12 +40,19 @@ const PrescriptionDetails = ({ data, patient, setShow }) => {
   // const dateMade = new Date(data.dateMade);
   // const formattedDate = dateMade.toISOString().replace(/:/g, "-");
 
-  const nextAppointedDate1 =
-    patient.appointedTime.slice(8, 10) +
-    "/" +
-    patient.appointedTime.slice(5, 7) +
-    "/" +
-    patient.appointedTime.slice(0, 4);
+  let nextAppointedDate = "";
+
+  if (data.date) {
+    nextAppointedDate =
+      data.date.slice(8, 10) +
+      "/" +
+      data.date.slice(5, 7) +
+      "/" +
+      data.date.slice(0, 4);
+  } else {
+    // Handle the case when appointedTime is null
+    nextAppointedDate = "Not provided by doctor";
+  }
 
   const handleDownloadPdf = async () => {
     const element = printRef.current;
@@ -590,7 +598,7 @@ const PrescriptionDetails = ({ data, patient, setShow }) => {
                 marginBottom: "2vh",
               }}>
               <Typography sx={{ fontSize: "1.2rem" }}>
-                <b>Next Appointed Date: </b> <span> </span> {nextAppointedDate1}
+                <b>Next Appointed Date: </b> <span> </span> {nextAppointedDate}
               </Typography>
             </Box>
           </Box>
