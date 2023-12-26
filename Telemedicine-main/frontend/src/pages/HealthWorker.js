@@ -15,7 +15,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import DoctorRegister from "../components/DoctorRegister";
+// import DoctorRegister from "../components/DoctorRegister";
 import FamilyRegistration from "../components/FamilyRegistration";
 import HwDashboard from "../components/HwDashboard";
 import MedicalConsultation from "../components/MedicalConsultation";
@@ -52,11 +52,11 @@ const HealthWorker = () => {
         return (
           <PatientInfo setShow={setshow} setPatientData={setPatientData} />
         );
+      // case 3:
+      //   return <DoctorRegister />;
       case 3:
-        return <DoctorRegister />;
-      case 4:
         return <SearchFamilyCards />;
-      case 5:
+      case 4:
         return (
           <SearchPrescription
             setPrevP={setPrevP}
@@ -65,9 +65,9 @@ const HealthWorker = () => {
             setPatient={setPatient}
           />
         );
-      case 6:
+      case 5:
         return <MedicineStore logs={setshow} />;
-      case 7:
+      case 6:
         return <MedicalConsultation />;
       case 10:
         return <PatientForm patientData={patientData} />;
@@ -163,7 +163,6 @@ const HealthWorker = () => {
             "Dashboard",
             "Family Registration",
             "Patient Registration",
-            "Doctor Registration",
             "Search Family Card",
             "Search Prescription",
             "Issue Medicine",
