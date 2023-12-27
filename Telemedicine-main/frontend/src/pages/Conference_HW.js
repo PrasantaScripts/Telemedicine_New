@@ -11,8 +11,8 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import { Tooltip } from "@mui/material";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import AddIcon from "@mui/icons-material/Add";
-// const socket = io.connect("http://localhost:5000");
-const socket = io.connect("https://ssfservice.in/");
+const socket = io.connect("http://localhost:5000");
+// const socket = io.connect("https://ssfservice.in/");
 
 const Conference = () => {
   const [message, setMessage] = useState();
@@ -66,9 +66,20 @@ const Conference = () => {
         currentUserVideoRef.current.srcObject = mediaStream;
         currentUserVideoRef.current.play();
         call.answer(mediaStream);
-        call.on("stream", function (remoteStream) {
+        call.on("stream", (remoteStream) => {
+          console.log("Remote stream received:", remoteStream);
           remoteVideoRef.current.srcObject = remoteStream;
-          remoteVideoRef.current.play();
+
+          remoteVideoRef.current.addEventListener("loadedmetadata", () => {
+            remoteVideoRef.current
+              .play()
+              .then(() => {
+                console.log("Remote video playback started successfully");
+              })
+              .catch((error) => {
+                console.error("Error playing remote video:", error);
+              });
+          });
         });
       });
     });
@@ -184,9 +195,18 @@ const Conference = () => {
       const call = peerInstance.current.call(remotePeerId, mediaStream);
 
       call.on("stream", (remoteStream) => {
-        console.log(remoteStream);
+        console.log("Remote stream received:", remoteStream);
         remoteVideoRef.current.srcObject = remoteStream;
-        remoteVideoRef.current.play();
+
+        remoteVideoRef.current.addEventListener("loadedmetadata", () => {
+          remoteVideoRef.current.play()
+            .then(() => {
+              console.log("Remote video playback started successfully");
+            })
+            .catch((error) => {
+              console.error("Error playing remote video:", error);
+            });
+        });
       });
     });
   }

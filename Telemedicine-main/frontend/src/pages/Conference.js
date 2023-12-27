@@ -22,8 +22,8 @@ import Popup from "../components/showPresriptionPopup";
 import Popup1 from "../components/PrescriptionDetailsPopup";
 import { Tooltip } from "@mui/material";
 import axios from "axios";
-// const socket = io.connect("http://localhost:5000");
-const socket = io.connect("https://ssfservice.in/");
+const socket = io.connect("http://localhost:5000");
+// const socket = io.connect("https://ssfservice.in/");
 
 const Conference = () => {
   const [max, setMax] = useState(0);
@@ -88,10 +88,20 @@ const Conference = () => {
         currentUserVideoRef.current.srcObject = mediaStream;
         currentUserVideoRef.current.play();
         call.answer(mediaStream);
-        call.on("stream", function (remoteStream) {
-          // Display the remote peer's video stream in the remote video element
+        call.on("stream", (remoteStream) => {
+          console.log("Remote stream received:", remoteStream);
           remoteVideoRef.current.srcObject = remoteStream;
-          remoteVideoRef.current.play();
+
+          remoteVideoRef.current.addEventListener("loadedmetadata", () => {
+            remoteVideoRef.current
+              .play()
+              .then(() => {
+                console.log("Remote video playback started successfully");
+              })
+              .catch((error) => {
+                console.error("Error playing remote video:", error);
+              });
+          });
         });
       });
     });
@@ -265,7 +275,16 @@ const Conference = () => {
         console.log(remoteStream);
         // Display the remote peer's video stream in the remote video element
         remoteVideoRef.current.srcObject = remoteStream;
-        remoteVideoRef.current.play();
+        remoteVideoRef.current.addEventListener("loadedmetadata", () => {
+          remoteVideoRef.current
+            .play()
+            .then(() => {
+              console.log("Remote video playback started successfully");
+            })
+            .catch((error) => {
+              console.error("Error playing remote video:", error);
+            });
+        });
       });
     });
   }
