@@ -91,7 +91,17 @@ const Conference = () => {
         call.on("stream", function (remoteStream) {
           // Display the remote peer's video stream in the remote video element
           remoteVideoRef.current.srcObject = remoteStream;
-          remoteVideoRef.current.play();
+          // remoteVideoRef.current.play();
+          setTimeout(() => {
+            remoteVideoRef.current
+              .play()
+              .then(() => {
+                console.log("Remote video playback started successfully");
+              })
+              .catch((error) => {
+                console.error("Error playing remote video:", error);
+              });
+          }, 500);
         });
       });
     });
@@ -265,7 +275,16 @@ const Conference = () => {
         console.log(remoteStream);
         // Display the remote peer's video stream in the remote video element
         remoteVideoRef.current.srcObject = remoteStream;
-        remoteVideoRef.current.play();
+        setTimeout(() => {
+          remoteVideoRef.current
+            .play()
+            .then(() => {
+              console.log("Remote video playback started successfully");
+            })
+            .catch((error) => {
+              console.error("Error playing remote video:", error);
+            });
+        }, 500);
       });
     });
   }
