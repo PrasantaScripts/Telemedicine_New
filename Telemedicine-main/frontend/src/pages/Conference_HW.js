@@ -11,8 +11,8 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import { Tooltip } from "@mui/material";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import AddIcon from "@mui/icons-material/Add";
-const socket = io.connect("http://localhost:5000");
-// const socket = io.connect("https://ssfservice.in/");
+// const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://ssfservice.in/");
 
 const Conference = () => {
   const [message, setMessage] = useState();
@@ -199,7 +199,8 @@ const Conference = () => {
         remoteVideoRef.current.srcObject = remoteStream;
 
         remoteVideoRef.current.addEventListener("loadedmetadata", () => {
-          remoteVideoRef.current.play()
+          remoteVideoRef.current
+            .play()
             .then(() => {
               console.log("Remote video playback started successfully");
             })

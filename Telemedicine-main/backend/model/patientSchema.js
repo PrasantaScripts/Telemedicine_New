@@ -19,6 +19,7 @@ const patientSchema = mongoose.Schema(
         type: String,
         required: true,
       },
+      pdfLinks: [{ type: String }],
       ticketId: {
         type: String,
         required: true,

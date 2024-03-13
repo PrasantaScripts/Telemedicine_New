@@ -45,6 +45,7 @@ const Popup1 = ({ setShow, Idx }) => {
         const t = await axios.post("/api/prescription/fetch", { id }, config);
         setPrescription(t.data[Idx]);
         setPatient(p.data);
+        console.log(t.data[Idx]);
       } catch (error) {
         console.log(error);
       }
@@ -550,6 +551,39 @@ const Popup1 = ({ setShow, Idx }) => {
               <i>No advice given</i>
             </Typography>
           )}
+        </Box>
+
+        <Box
+          display="flex"
+          sx={{
+            flexWrap: "wrap",
+            width: "100vw",
+            borderTop: "3px solid black ",
+            borderBottom: "3px solid black",
+            paddingBottom: "5px",
+            paddingTop: "10px",
+          }}>
+          <Box
+            sx={{
+              alignSelf: "flex-start",
+              marginLeft: "4vw",
+              marginBottom: "2vh",
+            }}>
+            <Typography sx={{ fontSize: "1.2rem" }}>
+              <b>Next Appointed Date: </b>{" "}
+              <span>
+                {prescription && prescription.date ? (
+                  <span>
+                    {prescription.date.slice(8, 10)}/
+                    {prescription.date.slice(5, 7)}/
+                    {prescription.date.slice(0, 4)}
+                  </span>
+                ) : (
+                  <span>Not given by doctor</span>
+                )}{" "}
+              </span>
+            </Typography>
+          </Box>
         </Box>
       </Box>
 
