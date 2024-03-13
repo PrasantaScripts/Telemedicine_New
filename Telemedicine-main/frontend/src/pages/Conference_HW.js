@@ -40,6 +40,7 @@ const Conference = () => {
 
     var getUserMedia =
       navigator.getUserMedia ||
+      navigator.mediaDevices.getUserMedia ||
       navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia;
 
@@ -59,6 +60,7 @@ const Conference = () => {
     peer.on("call", (call) => {
       var getUserMedia =
         navigator.getUserMedia ||
+        navigator.mediaDevices.getUserMedia ||
         navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia;
 
@@ -70,7 +72,8 @@ const Conference = () => {
           console.log("Remote stream received:", remoteStream);
           remoteVideoRef.current.srcObject = remoteStream;
 
-          remoteVideoRef.current.addEventListener("loadedmetadata", () => {
+          setTimeout(() => {
+
             remoteVideoRef.current
               .play()
               .then(() => {
@@ -79,7 +82,8 @@ const Conference = () => {
               .catch((error) => {
                 console.error("Error playing remote video:", error);
               });
-          });
+
+          }, 1000);
         });
       });
     });
@@ -185,6 +189,7 @@ const Conference = () => {
     var getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
+      navigator.mediaDevices.getUserMedia ||
       navigator.mozGetUserMedia;
 
     getUserMedia({ video: true, audio: true }, (mediaStream) => {
@@ -198,7 +203,8 @@ const Conference = () => {
         console.log("Remote stream received:", remoteStream);
         remoteVideoRef.current.srcObject = remoteStream;
 
-        remoteVideoRef.current.addEventListener("loadedmetadata", () => {
+        setTimeout(() => {
+
           remoteVideoRef.current
             .play()
             .then(() => {
@@ -207,22 +213,34 @@ const Conference = () => {
             .catch((error) => {
               console.error("Error playing remote video:", error);
             });
-        });
+
+        }, 1000);
+
       });
     });
   }
 
-  const videoPause = () => {
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const videoPause = debounce(() => {
     setVideo(!video);
     MyStream.getVideoTracks()[0].enabled =
       !MyStream.getVideoTracks()[0].enabled;
-  };
+  }, 300);
 
-  const audioPause = () => {
+  const audioPause = debounce(() => {
     setAudio(!audio);
     MyStream.getAudioTracks()[0].enabled =
       !MyStream.getAudioTracks()[0].enabled;
-  };
+  }, 300);
 
   return (
     <div>
