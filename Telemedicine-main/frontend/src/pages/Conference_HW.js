@@ -73,7 +73,6 @@ const Conference = () => {
           remoteVideoRef.current.srcObject = remoteStream;
 
           setTimeout(() => {
-
             remoteVideoRef.current
               .play()
               .then(() => {
@@ -82,7 +81,6 @@ const Conference = () => {
               .catch((error) => {
                 console.error("Error playing remote video:", error);
               });
-
           }, 1000);
         });
       });
@@ -204,7 +202,6 @@ const Conference = () => {
         remoteVideoRef.current.srcObject = remoteStream;
 
         setTimeout(() => {
-
           remoteVideoRef.current
             .play()
             .then(() => {
@@ -213,9 +210,7 @@ const Conference = () => {
             .catch((error) => {
               console.error("Error playing remote video:", error);
             });
-
-        }, 1000);
-
+        }, 600);
       });
     });
   }
