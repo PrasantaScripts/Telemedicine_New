@@ -68,9 +68,12 @@ const Conference = () => {
         currentUserVideoRef.current.srcObject = mediaStream;
         currentUserVideoRef.current.play();
         call.answer(mediaStream);
-        call.on("stream", function (remoteStream) {
+        call.on("stream", (remoteStream) => {
+          console.log("Remote stream received:", remoteStream);
           remoteVideoRef.current.srcObject = remoteStream;
+
           setTimeout(() => {
+
             remoteVideoRef.current
               .play()
               .then(() => {
@@ -79,6 +82,7 @@ const Conference = () => {
               .catch((error) => {
                 console.error("Error playing remote video:", error);
               });
+
           }, 1000);
         });
       });
@@ -196,9 +200,11 @@ const Conference = () => {
       const call = peerInstance.current.call(remotePeerId, mediaStream);
 
       call.on("stream", (remoteStream) => {
-        console.log(remoteStream);
+        console.log("Remote stream received:", remoteStream);
         remoteVideoRef.current.srcObject = remoteStream;
+
         setTimeout(() => {
+
           remoteVideoRef.current
             .play()
             .then(() => {
@@ -207,7 +213,9 @@ const Conference = () => {
             .catch((error) => {
               console.error("Error playing remote video:", error);
             });
+
         }, 1000);
+
       });
     });
   }
