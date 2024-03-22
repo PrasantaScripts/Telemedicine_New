@@ -66,20 +66,9 @@ const Conference = () => {
         currentUserVideoRef.current.srcObject = mediaStream;
         currentUserVideoRef.current.play();
         call.answer(mediaStream);
-        call.on("stream", (remoteStream) => {
-          console.log("Remote stream received:", remoteStream);
+        call.on("stream", function (remoteStream) {
           remoteVideoRef.current.srcObject = remoteStream;
-
-          remoteVideoRef.current.addEventListener("loadedmetadata", () => {
-            remoteVideoRef.current
-              .play()
-              .then(() => {
-                console.log("Remote video playback started successfully");
-              })
-              .catch((error) => {
-                console.error("Error playing remote video:", error);
-              });
-          });
+          remoteVideoRef.current.play();
         });
       });
     });
@@ -195,19 +184,9 @@ const Conference = () => {
       const call = peerInstance.current.call(remotePeerId, mediaStream);
 
       call.on("stream", (remoteStream) => {
-        console.log("Remote stream received:", remoteStream);
+        console.log(remoteStream);
         remoteVideoRef.current.srcObject = remoteStream;
-
-        remoteVideoRef.current.addEventListener("loadedmetadata", () => {
-          remoteVideoRef.current
-            .play()
-            .then(() => {
-              console.log("Remote video playback started successfully");
-            })
-            .catch((error) => {
-              console.error("Error playing remote video:", error);
-            });
-        });
+        remoteVideoRef.current.play();
       });
     });
   }

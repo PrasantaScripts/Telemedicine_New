@@ -310,35 +310,6 @@ const ticketFetch = asyncHandler(async (req, res) => {
   }
 });
 
-//api creation with endpoints to send the pdf to the database
-const pdfPost = async (req, res) => {
-  console.log("Request received");
-  const { registrationP, pdfLink } = req.params;
-  console.log("registrationP:", registrationP);
-  console.log("pdfLink:", pdfLink);
-  const decodedPdfLink = decodeURIComponent(pdfLink);
-
-  try {
-    console.log("Trying to find patient...");
-    const patient = await Patient.findOne({
-      "patientData.registrationP": registrationP,
-    });
-
-    if (!patient) {
-      console.log("Patient not found");
-      return res.status(401).json({ msg: "No user present" });
-    }
-    console.log("Patient found:", patient);
-    patient.patientData.pdfLinks.push(decodedPdfLink);
-    await patient.save();
-    console.log("PDF link saved successfully");
-    res.status(500).json({ message: "PDF uploaded successfully!" });
-  } catch (error) {
-    console.error("Error storing PDF link:", error);
-    res.status(500).json({ error: error });
-  }
-};
-
 module.exports = {
   fetchPatient,
   addPatient,
@@ -351,5 +322,4 @@ module.exports = {
   searchPatient,
   editPat,
   ticketFetch,
-  pdfPost,
 };

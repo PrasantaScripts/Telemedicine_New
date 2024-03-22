@@ -11,7 +11,6 @@ const {
   searchPatient,
   editPat,
   ticketFetch,
-  pdfPost
 } = require("../controllers/patientController");
 
 const router = express.Router();
@@ -27,5 +26,5 @@ router.get("/info", medicinalConsultant);
 router.post("/search", searchPatient);
 router.post("/editPat", editPat);
 router.post("/ticketFetch", ticketFetch);
-router.post("/pdfStore/:registrationP/:pdfLink", pdfPost);
+
 module.exports = router;

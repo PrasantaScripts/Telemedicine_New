@@ -317,6 +317,7 @@ const Prescription = () => {
   // };
 
   localStorage.setItem("id", id);
+  console.log(id);
   localStorage.setItem("dateMade", currDate);
 
   const diagnosisHandler = (e) => {

@@ -75,6 +75,7 @@ const DoctorDash = ({ setPrevP, setShow, setPrescription, setPatient }) => {
           console.log("no patients available", data);
         } else {
           setMeet("START MEET");
+        //here I have to set the patient registration number in the localstorage so that when the meet start I will  be able to access it for further use
           localStorage.setItem("room", data[0].patientData.ticketId);
           setCurrTID(data[0].patientData.ticketId);
         }

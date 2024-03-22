@@ -10,6 +10,7 @@ const patientRoutes = require("./routes/PatientRoutes");
 const logRoutes = require("./routes/logRoutes");
 const prescriptionRoutes = require("./routes/prescriptionRoutes");
 const medicineRoutes = require("./routes/medicineRoutes");
+const pdfStoreRoutes = require("./routes/pdfStoreRoutes");
 const path = require("path");
 // dotenv.config();
 const app = express();
@@ -24,8 +25,8 @@ console.log(PORT);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    // origin: "https://ssfservice.in/"
-    origin: "http://localhost:3000",
+    origin: "https://ssfservice.in/"
+    // origin: "http://localhost:3000",
   },
 });
 
@@ -60,6 +61,7 @@ app.use("/api/patient", patientRoutes);
 app.use("/api/logs", logRoutes);
 app.use("/api/prescription", prescriptionRoutes);
 app.use("/api/med", medicineRoutes);
+app.use("/api/pdfStore", pdfStoreRoutes);
 
 // app.get('/api',(req,res)=>{
 //     res.send("ok");

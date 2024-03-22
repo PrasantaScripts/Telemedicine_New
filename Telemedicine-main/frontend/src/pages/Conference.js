@@ -12,6 +12,7 @@ import Prescription from "./Prescription";
 import MicIcon from "@mui/icons-material/Mic";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
+import PdfIcon from "@mui/icons-material/PictureAsPdf";
 import MicOffIcon from "@mui/icons-material/MicOff";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -20,6 +21,7 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FolderIcon from "@mui/icons-material/Folder";
 import Popup from "../components/showPresriptionPopup";
 import Popup1 from "../components/PrescriptionDetailsPopup";
+import PdfList from "../components/PdfList.js";
 import { Tooltip } from "@mui/material";
 import axios from "axios";
 // const socket = io.connect("http://localhost:5000");
@@ -88,20 +90,10 @@ const Conference = () => {
         currentUserVideoRef.current.srcObject = mediaStream;
         currentUserVideoRef.current.play();
         call.answer(mediaStream);
-        call.on("stream", (remoteStream) => {
-          console.log("Remote stream received:", remoteStream);
+        call.on("stream", function (remoteStream) {
+          // Display the remote peer's video stream in the remote video element
           remoteVideoRef.current.srcObject = remoteStream;
-
-          remoteVideoRef.current.addEventListener("loadedmetadata", () => {
-            remoteVideoRef.current
-              .play()
-              .then(() => {
-                console.log("Remote video playback started successfully");
-              })
-              .catch((error) => {
-                console.error("Error playing remote video:", error);
-              });
-          });
+          remoteVideoRef.current.play();
         });
       });
     });
@@ -275,16 +267,7 @@ const Conference = () => {
         console.log(remoteStream);
         // Display the remote peer's video stream in the remote video element
         remoteVideoRef.current.srcObject = remoteStream;
-        remoteVideoRef.current.addEventListener("loadedmetadata", () => {
-          remoteVideoRef.current
-            .play()
-            .then(() => {
-              console.log("Remote video playback started successfully");
-            })
-            .catch((error) => {
-              console.error("Error playing remote video:", error);
-            });
-        });
+        remoteVideoRef.current.play();
       });
     });
   }
@@ -305,6 +288,7 @@ const Conference = () => {
   };
 
   function selectComponent() {
+    console.log("show:", show);
     switch (show) {
       case 0:
         return null;
@@ -312,6 +296,9 @@ const Conference = () => {
         return <Popup setShow={setShow} setid={setIdx} />;
       case 2:
         return <Popup1 setShow={setShow} Idx={idx} />;
+      case 3:
+        //creating the props of pdflist
+        return <PdfList setShow={setShow} />;
       default:
         return null;
     }
@@ -460,6 +447,19 @@ const Conference = () => {
                     }}>
                     {" "}
                     <FolderIcon fontSize="large" sx={{ width: "50px" }} />{" "}
+                  </button>
+                </Tooltip>
+              </div>
+              {/* pdf showing buttton creation */}
+              <div id="muteButton" className="options__button">
+                <Tooltip title="show the pdf">
+                  <button
+                    className="options__button"
+                    onClick={() => {
+                      setShow(3);
+                    }}>
+                    {" "}
+                    <PdfIcon fontSize="large" sx={{ width: "50px" }} />{" "}
                   </button>
                 </Tooltip>
               </div>
