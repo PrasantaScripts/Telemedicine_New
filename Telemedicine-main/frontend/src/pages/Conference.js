@@ -60,6 +60,7 @@ const Conference = () => {
     // Define cross-browser getUserMedia function
     var getUserMedia =
       navigator.getUserMedia ||
+      navigator.mediaDevices.getUserMedia ||
       navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia;
 
@@ -247,6 +248,7 @@ const Conference = () => {
     // Define cross-browser getUserMedia function
     var getUserMedia =
       navigator.getUserMedia ||
+      navigator.mediaDevices.getUserMedia ||
       navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia;
 
@@ -267,25 +269,41 @@ const Conference = () => {
         console.log(remoteStream);
         // Display the remote peer's video stream in the remote video element
         remoteVideoRef.current.srcObject = remoteStream;
-        remoteVideoRef.current.play();
+        remoteVideoRef.current.addEventListener("loadedmetadata", () => {
+          remoteVideoRef.current
+            .play()
+            .then(() => {
+              console.log("Remote video playback started successfully");
+            })
+            .catch((error) => {
+              console.error("Error playing remote video:", error);
+            });
+        });
       });
     });
   }
 
-  const videoPause = () => {
-    // Toggle the 'video' state variable
-    setVideo(!video);
-    // Get the first video track from the user's media stream
-    // Toggle the 'enabled' property of the video track
-    MyStream.getVideoTracks()[0].enabled =
-      !MyStream.getVideoTracks()[0].enabled;
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
   };
 
-  const audioPause = () => {
+  const videoPause = debounce(() => {
+    setVideo(!video);
+    MyStream.getVideoTracks()[0].enabled =
+      !MyStream.getVideoTracks()[0].enabled;
+  }, 300);
+
+  const audioPause = debounce(() => {
     setAudio(!audio);
     MyStream.getAudioTracks()[0].enabled =
       !MyStream.getAudioTracks()[0].enabled;
-  };
+  }, 300);
 
   function selectComponent() {
     console.log("show:", show);

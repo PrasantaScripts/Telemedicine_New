@@ -40,6 +40,7 @@ const Conference = () => {
 
     var getUserMedia =
       navigator.getUserMedia ||
+      navigator.mediaDevices.getUserMedia ||
       navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia;
 
@@ -59,6 +60,7 @@ const Conference = () => {
     peer.on("call", (call) => {
       var getUserMedia =
         navigator.getUserMedia ||
+        navigator.mediaDevices.getUserMedia ||
         navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia;
 
@@ -174,6 +176,7 @@ const Conference = () => {
     var getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
+      navigator.mediaDevices.getUserMedia ||
       navigator.mozGetUserMedia;
 
     getUserMedia({ video: true, audio: true }, (mediaStream) => {
@@ -191,17 +194,27 @@ const Conference = () => {
     });
   }
 
-  const videoPause = () => {
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const videoPause = debounce(() => {
     setVideo(!video);
     MyStream.getVideoTracks()[0].enabled =
       !MyStream.getVideoTracks()[0].enabled;
-  };
+  }, 300);
 
-  const audioPause = () => {
+  const audioPause = debounce(() => {
     setAudio(!audio);
     MyStream.getAudioTracks()[0].enabled =
       !MyStream.getAudioTracks()[0].enabled;
-  };
+  }, 300);
 
   return (
     <div>
