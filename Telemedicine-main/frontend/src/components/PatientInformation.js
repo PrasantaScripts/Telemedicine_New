@@ -32,53 +32,54 @@ const PatientInformation = () => {
   const isObjectEmpty = (objectName) => {
     return Object.keys(objectName).length === 0;
   };
-  const handleEdit= async () => {
-    if(edit){
-        setEdit(false)
-        return
-    }else{
-        setEdit(true)
+  const handleEdit = async () => {
+    if (edit) {
+      setEdit(false);
+      return;
+    } else {
+      setEdit(true);
     }
-    try{
-       const config= {
-            method:"POST",
-            headers:{
-                "Content-type":"application/json"
-            }
-       } 
-       console.log(infoData)
-       const data=await axios.post('/api/patient/editPat',{infoData},config)
-       if(data){
-          console.log(data)
-       }
-       
-
-    }catch(e){
-        console.log(e)
+    try {
+      const config = {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      console.log(infoData);
+      const data = await axios.post(
+        "/api/patient/editPat",
+        { infoData },
+        config
+      );
+      if (data) {
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
     }
-}
+  };
   const handleChangeP = (event) => {
     setInfoData({
       ...infoData,
       patientData: {
         ...infoData.patientData,
-        [event.target.name]: event.target.value
-      }
-    })
-      
+        [event.target.name]: event.target.value,
+      },
+    });
   };
   const handleChangeM = (event) => {
     setInfoData({
       ...infoData,
       medical: {
         ...infoData.medical,
-        [event.target.name]: event.target.value
-      }
-    })
-  }
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
   const handleChange = (event) => {
-    setInfoData({...infoData,[event.target.name]:event.target.value})
-  }
+    setInfoData({ ...infoData, [event.target.name]: event.target.value });
+  };
   const handlePat = () => {
     setShowPat(true);
     setShowMed(false);
@@ -94,11 +95,11 @@ const PatientInformation = () => {
     setShowMed(false);
     setOthers(true);
   };
-  useEffect( () => {
-    if(infoData){
-      console.log(infoData)
+  useEffect(() => {
+    if (infoData) {
+      console.log(infoData);
     }
-  },[infoData])
+  }, [infoData]);
   const processInfo = () => {
     const Tarr = [];
     const TpatArr = [];
@@ -134,6 +135,7 @@ const PatientInformation = () => {
       }
     }
     // console.log(Tarr);
+    // console.log(TpatArr);
     setPatientdata(TpatArr);
     setMedicalData(TmedArr);
     setArr(Tarr);
@@ -163,8 +165,7 @@ const PatientInformation = () => {
       console.log(e);
     }
   };
-  const InfoComp = ({Arr,Change}) => {
-
+  const InfoComp = ({ Arr, Change }) => {
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
@@ -173,8 +174,7 @@ const PatientInformation = () => {
             alignItems: "center",
             justifyContent: "space-between",
             marginBottom: "3%",
-          }}
-        >
+          }}>
           <button style={{ padding: "5px 25px" }} onClick={() => handleEdit()}>
             {edit ? "EDIT" : "SAVE"}
           </button>
@@ -201,7 +201,7 @@ const PatientInformation = () => {
       </div>
     );
   };
-  
+
   return search == true ? (
     <Box
       sx={{
@@ -212,8 +212,7 @@ const PatientInformation = () => {
         top: "12vh",
       }}
       display="flex"
-      justifyContent="center"
-    >
+      justifyContent="center">
       <motion.div layoutId="main">
         <Paper
           elevation={3}
@@ -224,13 +223,11 @@ const PatientInformation = () => {
             width: "30vw",
             height: "45vh",
             minWidth: "500px",
-          }}
-        >
+          }}>
           <motion.div
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
-            transition={{ delay: 0.4 }}
-          >
+            transition={{ delay: 0.4 }}>
             <Box display="flex" alignItems="center" sx={{ flexFlow: "column" }}>
               <img
                 src={Logo}
@@ -239,8 +236,7 @@ const PatientInformation = () => {
                   borderRadius: "50%",
                   position: "absolute",
                   top: "5vh",
-                }}
-              ></img>
+                }}></img>
               <Typography
                 variant="h4"
                 component="div"
@@ -248,15 +244,13 @@ const PatientInformation = () => {
                   fontFamily: "Roboto Slab",
                   color: "#17252A",
                   marginTop: "12vh",
-                }}
-              >
+                }}>
                 Search Patient
               </Typography>
               <Box
                 sx={{ marginTop: "5vh", alignSelf: "start", marginLeft: "3vw" }}
                 display="flex"
-                justifyContent="center"
-              >
+                justifyContent="center">
                 <Box
                   display="flex"
                   justifyContent="center"
@@ -267,12 +261,10 @@ const PatientInformation = () => {
                     height: "56px",
                     color: "#17252A",
                     borderRadius: "5px 0px 0px 5px",
-                  }}
-                >
+                  }}>
                   <i
                     class="material-icons"
-                    style={{ color: "#FEFFFF", fontSize: "2.5rem" }}
-                  >
+                    style={{ color: "#FEFFFF", fontSize: "2.5rem" }}>
                     create
                   </i>
                 </Box>
@@ -305,8 +297,7 @@ const PatientInformation = () => {
                   borderRadius: "25px",
                   marginTop: "5vh",
                   "&:hover": { backgroundColor: "#CF9D6E" },
-                }}
-              >
+                }}>
                 Search
               </Button>
             </Box>
@@ -317,14 +308,33 @@ const PatientInformation = () => {
   ) : (
     <>
       <div style={{ padding: "10% 20%" }}>
-        <div style={{width:"100%",display:'flex',justifyContent:'space-around',margin:"20px"}}>
-          <button style={{padding:' 5px 25px'}} onClick={() => handlePat()}> Patient Info</button>
-          <button style={{padding:' 5px 25px'}} onClick={() => handleMed()}> Patient Medical Info</button>
-          <button style={{padding:' 5px 25px'}} onClick={() => handleOthr()}> Patient Other Info</button>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-around",
+            margin: "20px",
+          }}>
+          <button style={{ padding: " 5px 25px" }} onClick={() => handlePat()}>
+            {" "}
+            Patient Info
+          </button>
+          <button style={{ padding: " 5px 25px" }} onClick={() => handleMed()}>
+            {" "}
+            Patient Medical Info
+          </button>
+          <button style={{ padding: " 5px 25px" }} onClick={() => handleOthr()}>
+            {" "}
+            Patient Other Info
+          </button>
         </div>
-        {others==true && <InfoComp Arr={arr} Change={handleChange}/>}
-        {showPat==true && <InfoComp Arr={patientdata} Change={handleChangeP}/>}
-        {showMed==true && <InfoComp Arr={medicalData} Change={handleChangeM}/>}
+        {others == true && <InfoComp Arr={arr} Change={handleChange} />}
+        {showPat == true && (
+          <InfoComp Arr={patientdata} Change={handleChangeP} />
+        )}
+        {showMed == true && (
+          <InfoComp Arr={medicalData} Change={handleChangeM} />
+        )}
       </div>
     </>
   );

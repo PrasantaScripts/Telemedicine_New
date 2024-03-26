@@ -121,6 +121,46 @@ const fetchFamily = asyncHandler(async (req, res) => {
   }
 });
 
+const addNewPatient = asyncHandler(async (req, res) => {
+  //get the data and push to the meember array
+  try {
+    console.log('Request body:', req.body);
+    const { newPatient } = req.body;
+    const { familyId, name, relationship} = newPatient;
+
+    const family = await Family.findOne({ id: familyId });
+    if (!family) {
+      return res.status(404).json({ message: "Family not found" });
+    }
+//adding the new registration number according to the patients
+    const lastMemberRegistrationNo = family.members[family.members.length - 1].id;
+    const newRegistrationNo = generateNextRegistrationNo(lastMemberRegistrationNo);
+
+    const newMember = {
+      name: name,
+      relationship: relationship,
+      id: newRegistrationNo,
+    };
+
+    family.members.push(newMember);
+    console.log("pushed successfully");
+    await family.save();
+
+    res
+      .status(201)
+      .json({ message: "New member added successfully", member: newMember });
+  } catch (error) {
+    console.error("Error adding family member:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Function to generate the next registration number
+function generateNextRegistrationNo(lastRegistrationNo) {
+  const numericPart = parseInt(lastRegistrationNo.slice(-3)) + 1;
+  return lastRegistrationNo.slice(0, -3) + numericPart.toString().padStart(3, '0');
+}
+
 const fetchTotalFamily = asyncHandler(async (req, res) => {
   const count = await Family.countDocuments({});
   if (count) {
@@ -132,53 +172,6 @@ const fetchTotalFamily = asyncHandler(async (req, res) => {
     throw new Error("check your internet");
   }
 });
-
-// const exportTotalFamily = asyncHandler(async (req, res) => {
-//   try {
-//     let users = [];
-
-//     var userData = await Family.find({});
-//     userData.forEach((user) => {
-//       const { name, mobile, date, members } = user;
-//       //   const familyArray = nestedData
-//       // .map((item) => {
-//       //   return `${item.name}: ${item.id}`;
-//       // })
-//       // .join("; ");
-
-//       const memberInfo = members
-//         .map((member) => {
-//           return `${member.name} (${member.id})`;
-//         })
-//         .join(", ");
-
-//       //   let membersObj = {}
-//       //   for (i = 0; i < members.length; i++) {
-//       //     users.push({user:members[i].name, id:members[i].id});
-
-//       //   }
-
-//       //   membersObj.push(name, mobile, date, education)
-//       //   console.log(membersObj)
-
-//       users.push({ name, mobile, date, members: memberInfo });
-//       console.log(users);
-//       // users.push({ name, mobile, date, education,});
-
-//       // users.push(membersObj)
-//     });
-
-//     const csvFields = ["NAME", "MOBILE", "DATE", "MEMBERS"];
-//     const csvParser = new CsvParser({ csvFields });
-//     const csvData = csvParser.parse(users);
-
-//     res.setHeader("Content-Type", "text/csv");
-//     res.setHeader("Content-Disposition", "attatchment:FamilyData.csv");
-//     res.status(200).end(csvData);
-//   } catch (error) {
-//     res.send({ status: 400, success: false, msg: error.message });
-//   }
-// });
 
 const exportTotalFamily = asyncHandler(async (req, res) => {
   try {
@@ -227,4 +220,5 @@ module.exports = {
   fetchFamily,
   fetchTotalFamily,
   exportTotalFamily,
+  addNewPatient,
 };

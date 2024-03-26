@@ -266,7 +266,7 @@ const searchPatient = asyncHandler(async (req, res) => {
   const { regNo } = req.body;
   console.log(regNo);
   const patient = await Patient.findOne({
-    "patientData.registrationNumber": regNo,
+    "patientData.registrationP": regNo,
   });
   if (patient) {
     res.send(patient);

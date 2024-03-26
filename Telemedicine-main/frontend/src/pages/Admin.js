@@ -32,6 +32,7 @@ import DoctorRegister from "../components/DoctorRegister";
 import MedicineLog from "../components/MedicineLog";
 import ShowPrescription from "../components/ShowPrescription";
 import PrescriptionDetails from "../components/PrescriptionDetails";
+import FamilyMemUpdate from "../components/FamilyMemUpdate";
 
 const Admin = () => {
   const [isOpen, setisOpen] = useState(false);
@@ -67,6 +68,8 @@ const Admin = () => {
       case 7:
         return <PatientInformation />;
       case 8:
+        return <FamilyMemUpdate />;
+      case 9:
         return <HwRegister />;
       case 11:
         return <MedicineLog />;
@@ -170,6 +173,7 @@ const Admin = () => {
             "Issue Medicine",
             "View Logs",
             "Patient Info",
+            "Family Member Update",
           ].map((text, idx) => (
             <ListItem key={text} disablePadding>
               <ListItemButton

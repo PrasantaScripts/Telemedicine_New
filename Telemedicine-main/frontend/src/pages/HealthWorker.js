@@ -28,6 +28,7 @@ import ShowPrescription from "../components/ShowPrescription";
 import mainImg from "../images/Logo.png";
 import MedicineStore from "../components/MedicineStore";
 import MedicineLog from "../components/MedicineLog";
+import FamilyMemUpdate from "../components/FamilyMemUpdate";
 const HealthWorker = () => {
   const [isOpen, setisOpen] = useState(false);
   const [show, setshow] = useState(0);
@@ -69,6 +70,8 @@ const HealthWorker = () => {
         return <MedicineStore logs={setshow} />;
       case 6:
         return <MedicalConsultation />;
+      case 7:
+        return <FamilyMemUpdate />;
       case 10:
         return <PatientForm patientData={patientData} />;
       case 11:
@@ -167,6 +170,7 @@ const HealthWorker = () => {
             "Search Prescription",
             "Issue Medicine",
             "Medical Consultation",
+            "Family Member Update",
           ].map((text, idx) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
