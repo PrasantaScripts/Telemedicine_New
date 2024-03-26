@@ -2,12 +2,10 @@ const Patient = require("../model/patientSchema");
 const PdfStore = require("../model/pdfStoreSchema"); // Import the PdfStore schema/model
 
 const pdfPost = async (req, res) => {
-  const { registrationP, pdfLink } = req.params;
-  const decodedPdfLink = decodeURIComponent(pdfLink);
-  // const encodedUrlLink = encodeURIComponent(
-  //   "https://clickdimensions.com/links/TestPDFfile.pdf"
-  // );
-  // console.log(encodedUrlLink);
+  // const { registrationP, pdfLink } = req.params;
+  // const decodedPdfLink = decodeURIComponent(pdfLink);
+  const { registrationP } = req.params;
+  const { pdfLink } = req.body;
 
   try {
     const patient = await Patient.findOne({
@@ -30,12 +28,12 @@ const pdfPost = async (req, res) => {
       console.log("Patient data not found in PdfStore, creating new entry...");
       pdfStore = new PdfStore({
         patientData: patientData,
-        pdfLinks: [decodedPdfLink],
+        pdfLinks: [pdfLink],
       });
     } else {
       // Add PDF link to the existing PdfStore document
       console.log("Patient data found in PdfStore, updating existing entry...");
-      pdfStore.pdfLinks.push(decodedPdfLink);
+      pdfStore.pdfLinks.push(pdfLink);
     }
 
     // Save the PdfStore document
