@@ -1,20 +1,27 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const PdfStoreSchema = mongoose.Schema({
-    patientData:{
-        type:Object
+const PdfStoreSchema = mongoose.Schema(
+  {
+    patientData: {
+      type: Object,
     },
     pdfLinks: {
-        type: [String],
-        default: []
-    }
+      type: [
+        {
+          Link: String,
+          device: String,
+        },
+      ],
 
+      default: [],
+    },
+  },
+  {
+    collection: "PdfStore",
+    timestamp: true,
+  }
+);
 
-},{
-    collection:'PdfStore',
-    timestamp:true,
-});
-
-const PdfStore = mongoose.model('PdfStore',PdfStoreSchema);
+const PdfStore = mongoose.model("PdfStore", PdfStoreSchema);
 
 module.exports = PdfStore;

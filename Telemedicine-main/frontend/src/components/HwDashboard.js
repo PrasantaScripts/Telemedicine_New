@@ -11,7 +11,7 @@ import {
   Grid,
 } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import DatePicker from "react-date-picker";
@@ -25,6 +25,10 @@ const HwDashboard = () => {
   const [docNames, setDocNames] = useState([]);
   const [docName, setDocName] = useState("");
   const [queue, setQueue] = useState(["Empty"]);
+  const [showQRPopup, setShowQRPopup] = useState(false);
+  const [qrButtonDisabled, setQRButtonDisabled] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const qrPopupRef = useRef(null);
   const history = useHistory();
 
   async function fetch1() {
@@ -83,6 +87,36 @@ const HwDashboard = () => {
       history.push("/");
     }
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (qrPopupRef.current && !qrPopupRef.current.contains(event.target)) {
+        closeQRPopup();
+      }
+    };
+
+    if (showQRPopup) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showQRPopup]);
+
+  const openQRPopup = (item) => {
+    setSelectedItem(item);
+    setShowQRPopup(true);
+    setQRButtonDisabled(true);
+  };
+
+  const closeQRPopup = () => {
+    setShowQRPopup(false);
+    setQRButtonDisabled(false);
+    setSelectedItem(null);
+  };
 
   const modifyQ = async () => {
     try {
@@ -595,7 +629,14 @@ const HwDashboard = () => {
                     </Typography>
                     {/* Here should be a box within this a button where by clicking other user can get the scanner and by scan that they can get the user ID of the patient */}
                     {/* I have to make a qr according to the queue.data.patientData.registrationP */}
-                    <QrGeneration queue={queue} />
+                    <QrGeneration
+                      item={selectedItem}
+                      showQRPopup={showQRPopup}
+                      openQRPopup={() => openQRPopup(item)}
+                      closeQRPopup={closeQRPopup}
+                      qrButtonDisabled={qrButtonDisabled}
+                      qrPopupRef={qrPopupRef}
+                    />
                     <Box
                       display="center"
                       justifyContent="center"

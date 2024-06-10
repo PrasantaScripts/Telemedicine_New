@@ -5,7 +5,7 @@ const pdfPost = async (req, res) => {
   // const { registrationP, pdfLink } = req.params;
   // const decodedPdfLink = decodeURIComponent(pdfLink);
   const { registrationP } = req.params;
-  const { pdfLink } = req.body;
+  const { pdfLink, device } = req.body;
 
   try {
     const patient = await Patient.findOne({
@@ -28,12 +28,12 @@ const pdfPost = async (req, res) => {
       console.log("Patient data not found in PdfStore, creating new entry...");
       pdfStore = new PdfStore({
         patientData: patientData,
-        pdfLinks: [pdfLink],
+        pdfLinks: [{ link: pdfLink, companyName: companyName }],
       });
     } else {
       // Add PDF link to the existing PdfStore document
       console.log("Patient data found in PdfStore, updating existing entry...");
-      pdfStore.pdfLinks.push(pdfLink);
+      pdfStore.pdfLinks.push({ link: pdfLink, companyName: companyName });
     }
 
     // Save the PdfStore document
